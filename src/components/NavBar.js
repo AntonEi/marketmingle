@@ -3,7 +3,10 @@ import { Navbar, Container, Nav } from "react-bootstrap";
 import logo from "../assets/logo.png";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
-import { useCurrentUser, useSetCurrentUser } from "../contexts/CurrentUserContext";
+import {
+  useCurrentUser,
+  useSetCurrentUser,
+} from "../contexts/CurrentUserContext";
 import Avatar from "./Avatar";
 import axios from "axios";
 
@@ -13,66 +16,64 @@ const NavBar = () => {
 
   const handleSignOut = async () => {
     try {
-      await axios.post("https://drf-api-rec.herokuapp.com/dj-rest-auth/logout/"); // Corrected URL with HTTPS
+      await axios.post("dj-rest-auth/logout/");
       setCurrentUser(null);
     } catch (err) {
-      console.error("Error signing out:", err); // Improved error handling
+      console.log(err);
     }
   };
 
-  const addPostIcon = currentUser && ( // Simplified condition for showing addPostIcon
+  const addPostIcon = (
     <NavLink
       className={styles.NavLink}
       activeClassName={styles.Active}
       to="/posts/create"
     >
-      Add post
+      <i className="far fa-plus-square"></i>Add post
     </NavLink>
   );
-
-  const loggedInIcons = currentUser && ( // Simplified condition for showing loggedInIcons
+  const loggedInIcons = (
     <>
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
         to="/feed"
       >
-        Feed
+        <i className="fas fa-stream"></i>Feed
       </NavLink>
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
         to="/liked"
       >
-        Liked
+        <i className="fas fa-heart"></i>Liked
       </NavLink>
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
-        Sign out
+        <i className="fas fa-sign-out-alt"></i>Sign out
       </NavLink>
       <NavLink
         className={styles.NavLink}
-        to={`/profiles/${currentUser.profile_id}`}
+        to={`/profiles/${currentUser?.profile_id}`}
       >
-        <Avatar src={currentUser.profile_image} text="Profile" height={40} />
+        <Avatar src={currentUser?.profile_image} text="Profile" height={40} />
       </NavLink>
     </>
   );
-
-  const loggedOutIcons = !currentUser && ( // Simplified condition for showing loggedOutIcons
+  const loggedOutIcons = (
     <>
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
         to="/signin"
       >
-        Sign in
+        <i className="fas fa-sign-in-alt"></i>Sign in
       </NavLink>
       <NavLink
         to="/signup"
         className={styles.NavLink}
         activeClassName={styles.Active}
       >
-        Sign up
+        <i className="fas fa-user-plus"></i>Sign up
       </NavLink>
     </>
   );
@@ -85,7 +86,7 @@ const NavBar = () => {
             <img src={logo} alt="logo" height="45" />
           </Navbar.Brand>
         </NavLink>
-        {addPostIcon}
+        {currentUser && addPostIcon}
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-left">
@@ -95,9 +96,10 @@ const NavBar = () => {
               activeClassName={styles.Active}
               to="/"
             >
-              Home
+              <i className="fas fa-home"></i>Home
             </NavLink>
-            {loggedInIcons || loggedOutIcons} {/* Conditionally render loggedInIcons or loggedOutIcons */}
+
+            {currentUser ? loggedInIcons : loggedOutIcons}
           </Nav>
         </Navbar.Collapse>
       </Container>
