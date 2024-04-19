@@ -15,8 +15,8 @@ const Post = (props) => {
     comments_count,
     likes_count,
     like_id,
-    dislike_id,
-    dislikes_count,
+    // dislike_id,
+    // dislikes_count,
     title,
     content,
     image,
@@ -62,37 +62,37 @@ const Post = (props) => {
     }
   };
 
-  const handleDislike = async () => {
-    try {
-      const { data } = await axiosRes.post("/dislikes/", { post: id });
-      setPosts((prevPosts) => ({
-        ...prevPosts,
-        results: prevPosts.results.map((post) => {
-          return post.id === id
-            ? { ...post, dislikes_count: post.dislikes_count + 1, dislike_id: data.id }
-            : post;
-        }),
-      }));
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const handleDislike = async () => {
+  //   try {
+  //     const { data } = await axiosRes.post("/dislikes/", { post: id });
+  //     setPosts((prevPosts) => ({
+  //       ...prevPosts,
+  //       results: prevPosts.results.map((post) => {
+  //         return post.id === id
+  //           ? { ...post, dislikes_count: post.dislikes_count + 1, dislike_id: data.id }
+  //           : post;
+  //       }),
+  //     }));
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
-  const handleRemoveDislike = async () => {
-    try {
-      await axiosRes.delete(`/dislikes/${dislike_id}/`);
-      setPosts((prevPosts) => ({
-        ...prevPosts,
-        results: prevPosts.results.map((post) => {
-          return post.id === id
-            ? { ...post, dislikes_count: post.dislikes_count - 1, dislike_id: null }
-            : post;
-        }),
-      }));
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const handleRemoveDislike = async () => {
+  //   try {
+  //     await axiosRes.delete(`/dislikes/${dislike_id}/`);
+  //     setPosts((prevPosts) => ({
+  //       ...prevPosts,
+  //       results: prevPosts.results.map((post) => {
+  //         return post.id === id
+  //           ? { ...post, dislikes_count: post.dislikes_count - 1, dislike_id: null }
+  //           : post;
+  //       }),
+  //     }));
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   const toggleExpand = () => {
     setExpanded(!expanded);
@@ -153,7 +153,7 @@ const Post = (props) => {
             )}
             {likes_count}
             {/* Dislike button */}
-            {dislike_id ? (
+            {/* {dislike_id ? (
               <span onClick={handleRemoveDislike}>
                 <i className={`fas fa-thumbs-down ${styles.Dislike}`} />
               </span>
@@ -161,7 +161,7 @@ const Post = (props) => {
               <span onClick={handleDislike}>
                 <i className={`far fa-thumbs-down ${styles.DislikeOutline}`} />
               </span>
-            )}
+            )} */}
             {/* Dislikes count */}
 
             <Link to={`/posts/${id}`}>
