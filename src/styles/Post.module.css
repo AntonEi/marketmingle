@@ -1,24 +1,72 @@
 .Post {
-    background-color: #ffffff;
-    border: 1px solid #dadadf;
-    border-radius: 2px;
-    margin-bottom: 16px;
-    text-align: center;
-  }
-  
-  .Post figure,
-  h5 {
-    margin: 0 0;
-  }
-  
-  .Heart {
-    color: #f85032;
-  }
-  
-  .Heart:hover {
-    color: #2142b2;
-  }
-  
-  .HeartOutline:hover {
-    color: #f85032;
-  }
+  background-color: #ffffff;
+  border: 1px solid #dadadf;
+  border-radius: 18px;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.imageLink {
+  position: absolute;
+  left: auto; /* Set to auto to align to the left */
+  right: 0; /* Align to the right side of the card */
+  top: 0;
+  bottom: 0;
+  width: 33.33%; /* Cover 1/3 of the card horizontally */
+}
+
+.image {
+  max-height: 100%; /* Set a maximum height for the image */
+  height: auto; /* Ensure the image maintains its aspect ratio */
+  object-fit: cover; /* Ensure the image covers the entire space */
+  border-top-right-radius: 18px; /* Add border radius for smooth left top corner */
+}
+
+.textContent {
+  max-width: calc(100% - 33.33% - 2rem); /* Adjust the width to ensure it doesn't overlap with the image */
+  padding: 1rem;
+  font-size: 13px;
+}
+
+.imageAndContent {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  margin: 0.5rem;
+}
+
+.avatarLink {
+  display: flex;
+  align-items: center;
+}
+.usernameDate {
+  margin-left: 0.5rem; /* Adjust margin as needed */
+}
+
+.avatarContainer {
+  display: flex;
+  align-items: baseline; /* Align items based on the baseline */
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+}
+
+.avatarLink {
+  margin-right: 1rem; /* Adjust margin as needed */
+}
+
+.avatarContainer span:last-child {
+  margin-left: 5rem; /* Add margin to the updated_at span */
+}
+
+.title {
+  /* Title styles */
+}
+
+.contentText {
+  /* Content styles */
+}
+
+.PostBar {
+  /* PostBar styles */
+}
+
+/* Like, dislike, comments button styles */

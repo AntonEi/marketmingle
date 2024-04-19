@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "../../styles/Post.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
@@ -15,7 +15,7 @@ const Post = (props) => {
     comments_count,
     likes_count,
     like_id,
-    dislike_id, 
+    dislike_id,
     dislikes_count,
     title,
     content,
@@ -27,9 +27,8 @@ const Post = (props) => {
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
-
-  // State to store the current number of dislikes
-  const [currentDislikesCount, setCurrentDislikesCount] = useState(dislikes_count);
+  const maxRows = 1; // Maximum number of rows to display initially
+  const [expanded, setExpanded] = useState(false);
 
   const handleLike = async () => {
     try {
@@ -78,7 +77,7 @@ const Post = (props) => {
       console.log(err);
     }
   };
-  
+
   const handleRemoveDislike = async () => {
     try {
       await axiosRes.delete(`/dislikes/${dislike_id}/`);
@@ -94,70 +93,87 @@ const Post = (props) => {
       console.log(err);
     }
   };
-  
+
+  const toggleExpand = () => {
+    setExpanded(!expanded);
+  };
+
+  const renderContent = () => {
+    const contentRows = content.split('\n');
+    if (contentRows.length > maxRows && !expanded) {
+      return (
+        <>
+          {contentRows.slice(0, maxRows).join('\n')}
+          <Link to="#" onClick={toggleExpand}>Read More</Link>
+        </>
+      );
+    } else {
+      return content;
+    }
+  };
+
   return (
     <Card className={styles.Post}>
-      <Card.Body>
-        <Media className="align-items-center justify-content-between">
-          <Link to={`/profiles/${profile_id}`}>
-            <Avatar src={profile_image} height={55} />
-            {owner}
-          </Link>
-          <div className="d-flex align-items-center">
+      <div className={styles.avatarContainer}>
+        <Link to={`/profiles/${profile_id}`} className={styles.avatarLink}>
+          <Avatar src={profile_image} height={35} />
+          <div>
+            <span>{owner}</span>
             <span>{updated_at}</span>
-            {is_owner && postPage && "..."}
           </div>
-        </Media>
-      </Card.Body>
-      <Link to={`/posts/${id}`}>
-        <Card.Img src={image} alt={title} />
-      </Link>
-      <Card.Body>
-        {title && <Card.Title className="text-center">{title}</Card.Title>}
-        {content && <Card.Text>{content}</Card.Text>}
-        <div className={styles.PostBar}>
-          {is_owner ? (
-            <OverlayTrigger
-              placement="top"
-              overlay={<Tooltip>You can't like your own post!</Tooltip>}
-            >
-              <i className="far fa-heart" />
-            </OverlayTrigger>
-          ) : like_id ? (
-            <span onClick={handleUnlike}>
-              <i className={`fas fa-heart ${styles.Heart}`} />
-            </span>
-          ) : currentUser ? (
-            <span onClick={handleLike}>
-              <i className={`far fa-heart ${styles.HeartOutline}`} />
-            </span>
-          ) : (
-            <OverlayTrigger
-              placement="top"
-              overlay={<Tooltip>Log in to like posts!</Tooltip>}
-            >
-              <i className="far fa-heart" />
-            </OverlayTrigger>
-          )}
-          {likes_count}
-          {/* Dislike button */}
-          {dislike_id ? (
-            <span onClick={handleRemoveDislike}>
-              <i className={`fas fa-thumbs-down ${styles.Dislike}`} />
-            </span>
-          ) : (
-            <span onClick={handleDislike}>
-              <i className={`far fa-thumbs-down ${styles.DislikeOutline}`} />
-            </span>
-          )}
-          {/* Dislikes count */}
-          {currentDislikesCount}
-          <Link to={`/posts/${id}`}>
-            <i className="far fa-comments" />
-          </Link>
-          {comments_count}
+        </Link>
+      </div>
+      <div className={styles.imageAndContent}>
+        <div className={styles.textContent}>
+          {title && <Card.Title className={styles.title}>{title}</Card.Title>}
+          {content && <Card.Text className={styles.contentText}>{renderContent()}</Card.Text>}
+          <div className={styles.PostBar}>
+            {is_owner ? (
+              <OverlayTrigger
+                placement="top"
+                overlay={<Tooltip>You can't like your own post!</Tooltip>}
+              >
+                <i className="fas fa-thumbs-up" />
+              </OverlayTrigger>
+            ) : like_id ? (
+              <span onClick={handleUnlike}>
+                <i className={`fas fa-thumbs-up ${styles.Heart}`} />
+              </span>
+            ) : currentUser ? (
+              <span onClick={handleLike}>
+                <i className={`fas fa-thumbs-up ${styles.HeartOutline}`} />
+              </span>
+            ) : (
+              <OverlayTrigger
+                placement="top"
+                overlay={<Tooltip>Log in to like posts!</Tooltip>}
+              >
+                <i className="fas fa-thumbs-up" />
+              </OverlayTrigger>
+            )}
+            {likes_count}
+            {/* Dislike button */}
+            {dislike_id ? (
+              <span onClick={handleRemoveDislike}>
+                <i className={`fas fa-thumbs-down ${styles.Dislike}`} />
+              </span>
+            ) : (
+              <span onClick={handleDislike}>
+                <i className={`far fa-thumbs-down ${styles.DislikeOutline}`} />
+              </span>
+            )}
+            {/* Dislikes count */}
+
+            <Link to={`/posts/${id}`}>
+              <i className="far fa-comments" />
+            </Link>
+            {comments_count} comments
+          </div>
         </div>
-      </Card.Body>
+        <Link to={`/posts/${id}`} className={styles.imageLink}>
+          <Card.Img src={image} alt={title} className={styles.image} />
+        </Link>
+      </div>
     </Card>
   );
 };
