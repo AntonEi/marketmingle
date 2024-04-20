@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import styles from "../../styles/Post.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
+import { MoreDropdown } from "../../components/MoreDropdown";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const Post = (props) => {
   const {
@@ -29,6 +31,20 @@ const Post = (props) => {
   const is_owner = currentUser?.username === owner;
   const maxRows = 1; // Maximum number of rows to display initially
   const [expanded, setExpanded] = useState(false);
+  const history = useHistory();
+
+  const handleEdit = () => {
+    history.push(`/posts/${id}/edit`);
+  };
+
+  const handleDelete = async () => {
+    try {
+      await axiosRes.delete(`/posts/${id}/`);
+      history.goBack();
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const handleLike = async () => {
     try {
@@ -115,11 +131,18 @@ const Post = (props) => {
   return (
     <Card className={styles.Post}>
       <div className={styles.avatarContainer}>
+      {is_owner && postPage && (
+              <MoreDropdown
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+              />
+            )}
         <Link to={`/profiles/${profile_id}`} className={styles.avatarLink}>
           <Avatar src={profile_image} height={35} />
           <div>
             <span>{owner}</span>
-            <span>{updated_at}</span>
+            <span>{updated_at} </span>
+            
           </div>
         </Link>
       </div>
@@ -167,7 +190,7 @@ const Post = (props) => {
             <Link to={`/posts/${id}`}>
               <i className="far fa-comments" />
             </Link>
-            {comments_count} comments
+            {comments_count} comments 
           </div>
         </div>
         <Link to={`/posts/${id}`} className={styles.imageLink}>
