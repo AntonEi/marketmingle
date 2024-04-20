@@ -51,6 +51,16 @@ function App() {
               />
             )}
           />
+          <Route
+            exact
+            path="/dislikes"
+            render={() => (
+              <PostsPage
+                message="No results found. Adjust the search keyword or dislike a post."
+                filter={`dislikes__owner__profile=${profile_id}&ordering=-dislikes__created_at&`}
+              />
+            )}
+          />
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/posts/create" render={() => <PostCreateForm />} />

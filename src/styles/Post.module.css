@@ -7,6 +7,7 @@
   overflow: hidden;
 }
 
+
 .imageLink {
   position: absolute;
   left: auto; /* Set to auto to align to the left */
@@ -17,15 +18,15 @@
 }
 
 .image {
-  max-height: 100%; /* Set a maximum height for the image */
-  height: auto; /* Ensure the image maintains its aspect ratio */
+  max-height: 500px; /* Set a maximum height for the image */
+   /* Ensure the image maintains its aspect ratio */
   object-fit: cover; /* Ensure the image covers the entire space */
   border-top-right-radius: 18px; /* Add border radius for smooth left top corner */
 }
 
 .textContent {
   max-width: calc(100% - 33.33% - 2rem); /* Adjust the width to ensure it doesn't overlap with the image */
-  padding: 1rem;
+  padding-left: 1rem;
   font-size: 13px;
 }
 
@@ -71,3 +72,11 @@
 }
 
 /* Like, dislike, comments button styles */
+
+.smallIcon {
+  font-size: 18px; /* Adjust the size as needed */
+}
+
+.customMargin {
+  margin-left: 100px;
+}
