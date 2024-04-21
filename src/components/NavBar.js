@@ -10,6 +10,8 @@ import {
 import Avatar from "./Avatar";
 import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
+import dislike1 from "../assets/dislike1.png"; // Import dislike1 image
+import like1 from "../assets/like1.png"; // Import like1 image
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
@@ -32,35 +34,38 @@ const NavBar = () => {
       activeClassName={styles.Active}
       to="/posts/create"
     >
+       <i className="far fa-plus-square"></i>
       Add post
     </NavLink>
   );
+
   const loggedInIcons = (
     <>
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
         to="/feed"
-      >
+      ><i className="fas fa-stream"></i>
         Feed
       </NavLink>
       <NavLink
-        className={styles.NavLink}
+        className={`${styles.NavLink} ${styles.Bullish}`} // Add Bullish class
         activeClassName={styles.Active}
         to="/liked"
-        style={{ color: '#00ff00' }} // Bright green
       >
+        <img src={like1} alt="Like1" className={styles.Icon} height="40" /> {/* Add like1 image */}
         Bullish
       </NavLink>
       <NavLink
-        className={styles.NavLink}
+        className={`${styles.NavLink} ${styles.Bearish}`} // Add Bearish class
         activeClassName={styles.Active}
         to="/dislikes"
-        style={{ color: '#ff0000' }} // Bright red
       >
+        <img src={dislike1} alt="Dislike1" className={styles.Icon} height="40" /> {/* Add dislike1 image */}
         Bearish
       </NavLink>
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
+      <i className="fas fa-sign-out-alt"></i>
         Sign out
       </NavLink>
       <NavLink
@@ -71,6 +76,7 @@ const NavBar = () => {
       </NavLink>
     </>
   );
+
   const loggedOutIcons = (
     <>
       <NavLink
@@ -117,6 +123,7 @@ const NavBar = () => {
               activeClassName={styles.Active}
               to="/"
             >
+              <i className="fas fa-home"></i>
               Home
             </NavLink>
 

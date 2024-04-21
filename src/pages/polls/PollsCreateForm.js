@@ -38,20 +38,21 @@ const PollsCreateForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("/questions/", {
-        question_text: questionText,
-        choices: choices.map((choice) => ({ choice_text: choice })),
+      const response = await axios.post(`/questions/`, {
+        choice_text: choiceText
       });
       // Handle success
-      console.log("Poll created:", response.data);
-      // Reset form fields
-      setQuestionText("");
-      setChoices([]);
+      console.log("Choice created:", response.data);
+      // Clear choice text field
+      setChoiceText("");
+      // You may also want to update the choices list after successful creation
+      // fetchChoices();
     } catch (error) {
       // Handle error
-      console.error("Error creating poll:", error);
+      console.error("Error creating choice:", error);
     }
   };
+  
 
   return (
     <div>

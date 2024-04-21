@@ -1,14 +1,29 @@
 .NavBar {
-    background-color: rgb(99, 108, 116);
+    background-color: #38424b;
     border-bottom: 1px solid #000000;
-    color: white;
+    color: #e4ebf3;
 }
 
 .NavLink {
     padding: 5px;
-    color: white;
+    color: #e4ebf3;
 }
 
 .Active {
-    color: aqua;
+    color: rgb(97, 133, 150);
+}
+
+.Bullish {
+    color: #00ff00; 
+}
+
+.Bearish {
+    color: #ff0000; 
+}
+.NavLink:hover {
+    color: rgb(108, 114, 119); 
+}
+
+i:hover {
+    color: rgb(108, 114, 119); 
 }

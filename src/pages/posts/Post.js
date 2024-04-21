@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../../styles/Post.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
@@ -7,6 +7,16 @@ import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+
+// Import the images
+import like1 from "../../assets/like1.png";
+import like2 from "../../assets/like2.png";
+import like3 from "../../assets/like3.png";
+import dislike1 from "../../assets/dislike1.png";
+import dislike2 from "../../assets/dislike2.png";
+import dislike3 from "../../assets/dislike3.png";
+import likeIcon from "../../assets/like.png";
+import dislikeIcon from "../../assets/dislike.png";
 
 const Post = (props) => {
   const {
@@ -29,6 +39,12 @@ const Post = (props) => {
 
   const currentUser = useCurrentUser();
   const history = useHistory();
+  const [likeClicked, setLikeClicked] = useState(false);
+  const [dislikeClicked, setDislikeClicked] = useState(false);
+  const [likeImage, setLikeImage] = useState(likeIcon);
+  const [dislikeImage, setDislikeImage] = useState(dislikeIcon);
+  const [liked, setLiked] = useState(like_id ? true : false);
+  const [disliked, setDisliked] = useState(dislike_id ? true : false);
 
   const handleEdit = () => {
     history.push(`/posts/${id}/edit`);
@@ -45,31 +61,35 @@ const Post = (props) => {
 
   const handleLike = async () => {
     try {
-      const { data } = await axiosRes.post("/likes/", { post: id });
-      setPosts((prevPosts) => ({
-        ...prevPosts,
-        results: prevPosts.results.map((post) => {
-          return post.id === id
-            ? { ...post, likes_count: post.likes_count + 1, like_id: data.id }
-            : post;
-        }),
-      }));
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const handleUnlike = async () => {
-    try {
-      await axiosRes.delete(`/likes/${like_id}/`);
-      setPosts((prevPosts) => ({
-        ...prevPosts,
-        results: prevPosts.results.map((post) => {
-          return post.id === id
-            ? { ...post, likes_count: post.likes_count - 1, like_id: null }
-            : post;
-        }),
-      }));
+      setLikeClicked(!likeClicked); // Toggle the likeClicked state
+      setTimeout(() => setLikeClicked(false), 1500); // Reset likeClicked after 1.5 seconds
+      if (!liked) {
+        setLikeImage(like1);
+        setTimeout(() => setLikeImage(like2), 500);
+        setTimeout(() => setLikeImage(like3), 1000);
+        const { data } = await axiosRes.post("/likes/", { post: id });
+        setLiked(true);
+        setPosts((prevPosts) => ({
+          ...prevPosts,
+          results: prevPosts.results.map((post) => {
+            return post.id === id
+              ? { ...post, likes_count: post.likes_count + 1, like_id: data.id }
+              : post;
+          }),
+        }));
+      } else {
+        setLikeImage(likeIcon); // Set back to default icon
+        await axiosRes.delete(`/likes/${like_id}/`);
+        setLiked(false);
+        setPosts((prevPosts) => ({
+          ...prevPosts,
+          results: prevPosts.results.map((post) => {
+            return post.id === id
+              ? { ...post, likes_count: post.likes_count - 1, like_id: null }
+              : post;
+          }),
+        }));
+      }
     } catch (err) {
       console.log(err);
     }
@@ -77,38 +97,58 @@ const Post = (props) => {
 
   const handleDislike = async () => {
     try {
-      const { data } = await axiosRes.post("/dislikes/", { post: id });
-      setPosts((prevPosts) => ({
-        ...prevPosts,
-        results: prevPosts.results.map((post) => {
-          return post.id === id
-            ? { ...post, dislikes_count: post.dislikes_count + 1, dislike_id: data.id }
-            : post;
-        }),
-      }));
+      setDislikeClicked(!dislikeClicked); // Toggle the dislikeClicked state
+      setTimeout(() => setDislikeClicked(false), 1500); // Reset dislikeClicked after 1.5 seconds
+      if (!disliked) {
+        setDislikeImage(dislike1);
+        setTimeout(() => setDislikeImage(dislike2), 500);
+        setTimeout(() => setDislikeImage(dislike3), 1000);
+        const { data } = await axiosRes.post("/dislikes/", { post: id });
+        setDisliked(true);
+        setPosts((prevPosts) => ({
+          ...prevPosts,
+          results: prevPosts.results.map((post) => {
+            return post.id === id
+              ? { ...post, dislikes_count: post.dislikes_count + 1, dislike_id: data.id }
+              : post;
+          }),
+        }));
+      } else {
+        setDislikeImage(dislikeIcon); // Set back to default icon
+        await axiosRes.delete(`/dislikes/${dislike_id}/`);
+        setDisliked(false);
+        setPosts((prevPosts) => ({
+          ...prevPosts,
+          results: prevPosts.results.map((post) => {
+            return post.id === id
+              ? { ...post, dislikes_count: post.dislikes_count - 1, dislike_id: null }
+              : post;
+          }),
+        }));
+      }
     } catch (err) {
       console.log(err);
     }
   };
 
-  const handleUndislike = async () => {
-    try {
-      await axiosRes.delete(`/dislikes/${dislike_id}/`);
-      setPosts((prevPosts) => ({
-        ...prevPosts,
-        results: prevPosts.results.map((post) => {
-          return post.id === id
-            ? { ...post, dislikes_count: post.dislikes_count - 1, dislike_id: null }
-            : post;
-        }),
-      }));
-    } catch (err) {
-      console.log(err);
+  useEffect(() => {
+    // Set initial like image based on liked state
+    if (liked) {
+      setLikeImage(like3);
     }
-  };
+  }, [liked]);
+
+  useEffect(() => {
+    // Set initial dislike image based on disliked state
+    if (disliked) {
+      setDislikeImage(dislike3);
+    }
+  }, [disliked]);
+
+  const postBorderColor = likes_count > dislikes_count ? styles.greenBorder : dislikes_count > likes_count ? styles.redBorder : '';
 
   return (
-    <Card className={styles.Post}>
+    <Card className={`${styles.Post} ${postBorderColor}`}>
       <div className={styles.avatarContainer}>
         {currentUser?.username === owner && postPage && (
           <MoreDropdown
@@ -130,41 +170,21 @@ const Post = (props) => {
           {content && <Card.Text className={styles.contentText}>{content}</Card.Text>}
           <div className={styles.PostBar}>
             {/* Like button */}
-            {like_id ? (
-              <span onClick={handleUnlike}>
-                <i className={`fas fa-thumbs-up ${styles.Heart} ${styles.smallIcon}`} />
-              </span>
-            ) : currentUser ? (
-              <span onClick={handleLike}>
-                <i className={`fas fa-thumbs-up ${styles.HeartOutline} ${styles.smallIcon}`} />
-              </span>
-            ) : (
-              <OverlayTrigger
-                placement="top"
-                overlay={<Tooltip>Log in to like posts!</Tooltip>}
-              >
-                <i className={`fas fa-thumbs-up ${styles.smallIcon}`} />
-              </OverlayTrigger>
-            )}
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>Are you Bullish?!</Tooltip>}
+            >
+              <img src={likeImage} alt="Like" className={styles.smallpictures} onClick={handleLike} />
+            </OverlayTrigger>
             {likes_count}
 
             {/* Dislike button */}
-            {dislike_id ? (
-              <span onClick={handleUndislike}>
-                <i className={`fas fa-thumbs-down ${styles.Heart} ${styles.smallIcon}`} />
-              </span>
-            ) : currentUser ? (
-              <span onClick={handleDislike}>
-                <i className={`fas fa-thumbs-down ${styles.HeartOutline} ${styles.smallIcon}`} />
-              </span>
-            ) : (
-              <OverlayTrigger
-                placement="top"
-                overlay={<Tooltip>Log in to dislike posts!</Tooltip>}
-              >
-                <i className={`fas fa-thumbs-down ${styles.smallIcon}`} />
-              </OverlayTrigger>
-            )}
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>Are you Bearish?!</Tooltip>}
+            >
+              <img src={dislikeImage} alt="Dislike" className={styles.smallpictures} onClick={handleDislike} />
+            </OverlayTrigger>
             {dislikes_count}
 
             {/* Comments */}

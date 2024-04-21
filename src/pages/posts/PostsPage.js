@@ -79,7 +79,7 @@ function PostsPage({ message, filter = "" }) {
               />
             ) : (
               <Container className={appStyles.Content}>
-                <Asset src={NoResults} message={message} />
+                <Asset src={NoResults} message={"No results! Go to the Home page and explore more content!"} />
               </Container>
             )}
           </>
