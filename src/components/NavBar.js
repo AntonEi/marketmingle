@@ -48,15 +48,17 @@ const NavBar = () => {
         className={styles.NavLink}
         activeClassName={styles.Active}
         to="/liked"
+        style={{ color: '#00ff00' }} // Bright green
       >
-        Liked
+        Bullish
       </NavLink>
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
         to="/dislikes"
+        style={{ color: '#ff0000' }} // Bright red
       >
-        disLiked
+        Bearish
       </NavLink>
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
         Sign out
