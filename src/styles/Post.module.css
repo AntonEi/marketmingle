@@ -1,6 +1,5 @@
 .Post {
   background-color: #ffffff;
-  border: 1px solid #dadadf;
   border-radius: 18px;
   margin-bottom: 16px;
   position: relative;
@@ -59,19 +58,6 @@
   margin-left: 5rem; /* Add margin to the updated_at span */
 }
 
-.title {
-  /* Title styles */
-}
-
-.contentText {
-  /* Content styles */
-}
-
-.PostBar {
-  /* PostBar styles */
-}
-
-/* Like, dislike, comments button styles */
 
 .smallIcon {
   font-size: 18px; /* Adjust the size as needed */

@@ -3,68 +3,84 @@ import axios from "axios";
 
 const PollsCreateForm = () => {
   const [questionText, setQuestionText] = useState("");
-  const [choiceText, setChoiceText] = useState("");
   const [choices, setChoices] = useState([]);
+  const [newChoice, setNewChoice] = useState("");
+  const [polls, setPolls] = useState([]);
 
+  // Function to fetch all polls from the backend
+  const fetchPolls = async () => {
+    try {
+      const response = await axios.get("/questions/");
+      setPolls(response.data);
+    } catch (error) {
+      console.error("Error fetching polls:", error);
+    }
+  };
+
+  // Fetch all polls when the component mounts
   useEffect(() => {
-    // Add an interceptor to include the authentication token with each request
-    const interceptor = axios.interceptors.request.use((config) => {
-      // Retrieve token from localStorage or wherever it's stored
-      const token = localStorage.getItem("authToken");
-      if (token) {
-        config.headers.Authorization = `Token ${token}`;
-      }
-      return config;
-    });
-
-    // Cleanup the interceptor when component unmounts
-    return () => {
-      axios.interceptors.request.eject(interceptor);
-    };
+    fetchPolls();
   }, []);
 
   const handleAddChoice = () => {
-    if (choiceText.trim() !== "") {
-      setChoices([...choices, choiceText]);
-      setChoiceText("");
+    if (newChoice.trim() !== "") {
+      setChoices([...choices, newChoice]);
+      setNewChoice("");
     }
   };
 
   const handleRemoveChoice = (index) => {
-    const updatedChoices = choices.filter((_, i) => i !== index);
+    const updatedChoices = [...choices];
+    updatedChoices.splice(index, 1);
     setChoices(updatedChoices);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`/questions/`, {
-        choice_text: choiceText
-      });
-      // Handle success
-      console.log("Choice created:", response.data);
-      // Clear choice text field
-      setChoiceText("");
-      // You may also want to update the choices list after successful creation
-      // fetchChoices();
+      const payload = {
+        question_text: questionText,
+        choices: choices.map((choice) => ({ choice_text: choice })),
+      };
+
+      const response = await axios.post("/questions/", payload);
+
+      console.log("Poll created:", response.data);
+
+      setQuestionText("");
+      setChoices([]);
+      setNewChoice("");
+
+      // Fetch all polls again to update the list
+      fetchPolls();
     } catch (error) {
-      // Handle error
-      console.error("Error creating choice:", error);
+      console.error("Error creating poll:", error);
     }
   };
-  
+
+  const handleRemovePoll = async (pollId) => {
+    try {
+      await axios.delete(`/questions/${pollId}/`);
+      // Fetch all polls again to update the list
+      fetchPolls();
+    } catch (error) {
+      console.error("Error deleting poll:", error);
+    }
+  };
 
   return (
     <div>
       <h2>Create a Poll</h2>
       <form onSubmit={handleSubmit}>
-        <label>Question:</label>
+        <label htmlFor="question">Question:</label>
         <input
+          id="question"
           type="text"
           value={questionText}
           onChange={(e) => setQuestionText(e.target.value)}
         />
-        <label>Choices:</label>
+
+        <label htmlFor="choices">Choices:</label>
         <ul>
           {choices.map((choice, index) => (
             <li key={index}>
@@ -75,16 +91,44 @@ const PollsCreateForm = () => {
             </li>
           ))}
         </ul>
+
         <input
+          id="choices"
           type="text"
-          value={choiceText}
-          onChange={(e) => setChoiceText(e.target.value)}
+          value={newChoice}
+          onChange={(e) => setNewChoice(e.target.value)}
         />
         <button type="button" onClick={handleAddChoice}>
           Add Choice
         </button>
+
         <button type="submit">Create Poll</button>
       </form>
+
+      <div>
+        <h3>Preview:</h3>
+        <p><strong>Question:</strong> {questionText}</p>
+        <ul>
+          {choices.map((choice, index) => (
+            <li key={index}>{choice}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h3>Created Polls:</h3>
+        {polls.map((poll) => (
+          <div key={poll.id}>
+            <p><strong>Question:</strong> {poll.question_text}</p>
+            <ul>
+              {poll.choices.map((choice, index) => (
+                <li key={index}>{choice.choice_text}</li>
+              ))}
+            </ul>
+            <button onClick={() => handleRemovePoll(poll.id)}>Remove Poll</button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

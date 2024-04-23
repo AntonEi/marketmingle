@@ -7,6 +7,7 @@ import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import Badge from "react-bootstrap/Badge";
 
 // Import the images
 import like1 from "../../assets/like1.png";
@@ -35,6 +36,7 @@ const Post = (props) => {
     updated_at,
     postPage,
     setPosts,
+    tags_data,
   } = props;
 
   const currentUser = useCurrentUser();
@@ -144,9 +146,10 @@ const Post = (props) => {
       setDislikeImage(dislike3);
     }
   }, [disliked]);
+  
 
   const postBorderColor = likes_count > dislikes_count ? styles.greenBorder : dislikes_count > likes_count ? styles.redBorder : '';
-
+  console.log("Tags Data:", tags_data);
   return (
     <Card className={`${styles.Post} ${postBorderColor}`}>
       <div className={styles.avatarContainer}>
@@ -198,6 +201,23 @@ const Post = (props) => {
           <Card.Img src={image} alt={title} className={styles.image} />
         </Link>
       </div>
+      <div className={styles.TagsContainer}>
+          {tags_data && tags_data.length > 0 ? (
+            <>
+              <span>Tags: </span>
+              {tags_data.map((tag) => (
+                <Badge
+                  key={tag.id}
+                  pill
+                  variant="secondary"
+                  className="mr-2 mb-4"
+                >
+                  {tag.name}
+                </Badge>
+              ))}
+            </>
+          ) : null}
+        </div>
     </Card>
   );
 };

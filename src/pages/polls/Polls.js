@@ -1,57 +1,93 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import styles from '../../styles/Polls.module.css'; // Adjust the import path based on your project structure
 
-const PollResultsPage = () => {
-  const [pollData, setPollData] = useState(null);
-  const [error, setError] = useState(null);
+const Polls = () => {
+  const [questions, setQuestions] = useState([]);
+  const [userVotes, setUserVotes] = useState({});
 
   useEffect(() => {
-    const fetchPollData = async () => {
+    const fetchQuestions = async () => {
       try {
-        // Fetch poll data from the backend API
-        const response = await axios.get("/questions/");
-        setPollData(response.data);
+        const response = await axios.get('/questions/');
+        setQuestions(response.data);
+        // Initialize userVotes with null for each question ID
+        const initialVotes = {};
+        response.data.forEach(question => {
+          initialVotes[question.id] = null;
+        });
+        setUserVotes(initialVotes);
       } catch (error) {
-        // Handle error
-        setError(error.message);
+        console.error('Error fetching questions:', error);
       }
     };
 
-    fetchPollData();
-
-    // Cleanup function
-    return () => {
-      // Cleanup code (if needed)
-    };
+    fetchQuestions();
   }, []);
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
-  if (!pollData) {
-    return <div>Loading...</div>;
-  }
+  const handleVote = async (questionId, choiceId) => {
+    try {
+      // Check if the user is removing their vote
+      const isRemovingVote = userVotes[questionId] === choiceId;
+      
+      // Set the user's vote for this question
+      setUserVotes(prevUserVotes => ({
+        ...prevUserVotes,
+        [questionId]: isRemovingVote ? null : choiceId
+      }));
+      
+      // Update the vote count for the selected choice
+      const choiceResponse = await axios.get(`/questions/${questionId}/choices/${choiceId}/`);
+      let userList = choiceResponse.data.users;
+      const currentId = 1; // Fix it
+      userList.push(currentId)
+      const response = await axios.patch(`/questions/${questionId}/choices/${choiceId}/`, {votes: parseInt(choiceResponse.data.votes) + 1, users: userList});
+      setQuestions(prevQuestions =>
+        prevQuestions.map(question => {
+          if (question.id === questionId) {
+            return {
+              ...question,
+              choices: question.choices.map(choice => {
+                if (choice.id === choiceId) {
+                  return {
+                    ...choice,
+                    votes: response.data.votes
+                  };
+                }
+                return choice;
+              })
+            };
+          }
+          return question;
+        })
+      );
+    } catch (error) {
+      console.error('Error voting:', error);
+    }
+  };
+  
 
   return (
-    <div>
-      <h2>Poll Results</h2>
-      <ul>
-        {pollData.map((poll) => (
-          <li key={poll.id}>
-            <h3>{poll.question_text}</h3>
-            <ul>
-              {poll.choices.map((choice) => (
-                <li key={choice.id}>
-                  {choice.choice_text}: {choice.votes} votes
-                </li>
-              ))}
-            </ul>
-          </li>
-        ))}
-      </ul>
+    <div className={styles['polls-container']}>
+      {questions && questions.length > 0 && questions.map(question => (
+        <div className={styles['polls-question']} key={question.id}>
+          <h3>{question.question_text}</h3>
+          <div className={styles['polls-choices']}>
+            {question.choices.map(choice => (
+              <div className={styles['polls-choice']} key={choice.id}>
+                <button 
+                  onClick={() => handleVote(question.id, choice.id)}
+                  disabled={userVotes[question.id] !== null && userVotes[question.id] !== choice.id}
+                >
+                  {choice.choice_text} ({choice.votes})
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   );
 };
 
-export default PollResultsPage;
+export default Polls;
