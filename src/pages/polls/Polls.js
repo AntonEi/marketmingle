@@ -1,29 +1,47 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from '../../styles/Polls.module.css'; // Adjust the import path based on your project structure
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 const Polls = () => {
   const [questions, setQuestions] = useState([]);
   const [userVotes, setUserVotes] = useState({});
+  const currentUser = useCurrentUser();
 
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await axios.get('/questions/');
-        setQuestions(response.data);
-        // Initialize userVotes with null for each question ID
-        const initialVotes = {};
-        response.data.forEach(question => {
-          initialVotes[question.id] = null;
-        });
-        setUserVotes(initialVotes);
+        if (currentUser){
+          const response = await axios.get('/questions/');
+          setQuestions(response.data);
+          // Initialize userVotes with null for each question ID
+          const initialVotes = {};
+          response.data.forEach(question => {
+            let voted = false;
+            let currentChoice = null;
+            question.choices.forEach((choice) => { 
+              if (choice.users.includes(currentUser.pk)){
+                voted = true;
+                currentChoice = choice;
+              }
+            })
+            if (voted){
+              initialVotes[question.id] = currentChoice.id;
+            }
+            else{
+              initialVotes[question.id] = null;
+            }
+            
+          });
+          setUserVotes(initialVotes);
+        }
       } catch (error) {
         console.error('Error fetching questions:', error);
       }
     };
 
     fetchQuestions();
-  }, []);
+  }, [currentUser]);
 
   const handleVote = async (questionId, choiceId) => {
     try {
@@ -38,10 +56,14 @@ const Polls = () => {
       
       // Update the vote count for the selected choice
       const choiceResponse = await axios.get(`/questions/${questionId}/choices/${choiceId}/`);
-      let userList = choiceResponse.data.users;
-      const currentId = 1; // Fix it
+      let userList = choiceResponse.data.users; 
+      const currentId = currentUser.pk; // Fix it
       userList.push(currentId)
-      const response = await axios.patch(`/questions/${questionId}/choices/${choiceId}/`, {votes: parseInt(choiceResponse.data.votes) + 1, users: userList});
+      let newVoteCount = parseInt(choiceResponse.data.votes) + 1;
+      if (isRemovingVote){
+        newVoteCount = parseInt(choiceResponse.data.votes) - 1;
+      }
+      const response = await axios.patch(`/questions/${questionId}/choices/${choiceId}/`, {votes: newVoteCount, users: userList});
       setQuestions(prevQuestions =>
         prevQuestions.map(question => {
           if (question.id === questionId) {

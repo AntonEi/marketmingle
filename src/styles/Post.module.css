@@ -20,7 +20,6 @@
   max-height: 500px; /* Set a maximum height for the image */
    /* Ensure the image maintains its aspect ratio */
   object-fit: cover; /* Ensure the image covers the entire space */
-  border-top-right-radius: 18px; /* Add border radius for smooth left top corner */
 }
 
 .textContent {

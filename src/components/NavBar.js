@@ -12,6 +12,7 @@ import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 import dislike1 from "../assets/dislike1.png"; // Import dislike1 image
 import like1 from "../assets/like1.png"; // Import like1 image
+import { removeTokenTimestamp } from "../utils/utils";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
@@ -23,8 +24,8 @@ const NavBar = () => {
     try {
       await axios.post("dj-rest-auth/logout/");
       setCurrentUser(null);
+      removeTokenTimestamp()
     } catch (err) {
-      console.log(err);
     }
   };
 

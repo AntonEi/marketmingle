@@ -17,7 +17,7 @@ import NoResults from "../../assets/no-results.png";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles";
-import Polls from "../polls/Polls"; 
+
 import PollsPage from "../polls/PollsPage";
 
 function PostsPage({ message, filter = "" }) {
@@ -34,7 +34,6 @@ function PostsPage({ message, filter = "" }) {
         setPosts(data);
         setHasLoaded(true);
       } catch (err) {
-        console.log(err);
       }
     };
 

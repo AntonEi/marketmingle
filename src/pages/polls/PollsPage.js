@@ -17,7 +17,7 @@ const PollsPage = ({ mobile }) => {
       {/* Display the spinner before content loads */}
       
       <>
-        <p>Recent Polls:</p>
+        <p>This weeks Polls:</p>
         <Polls /> {/* Display the Polls component */}
       </>
     </Container>

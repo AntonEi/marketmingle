@@ -57,7 +57,6 @@ const Post = (props) => {
       await axiosRes.delete(`/posts/${id}/`);
       history.goBack();
     } catch (err) {
-      console.log(err);
     }
   };
 
@@ -93,7 +92,6 @@ const Post = (props) => {
         }));
       }
     } catch (err) {
-      console.log(err);
     }
   };
 
@@ -129,7 +127,6 @@ const Post = (props) => {
         }));
       }
     } catch (err) {
-      console.log(err);
     }
   };
 
@@ -149,7 +146,6 @@ const Post = (props) => {
   
 
   const postBorderColor = likes_count > dislikes_count ? styles.greenBorder : dislikes_count > likes_count ? styles.redBorder : '';
-  console.log("Tags Data:", tags_data);
   return (
     <Card className={`${styles.Post} ${postBorderColor}`}>
       <div className={styles.avatarContainer}>

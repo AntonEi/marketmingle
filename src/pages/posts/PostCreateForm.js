@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef} from "react";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -73,7 +73,8 @@ function PostCreateForm() {
           const response = await axiosReq.post("/tags/", { name: tag });
           userAddedTags.push(response.data);
         }
-      } catch (error) {}
+      } catch (error) {console.error("Error creating tag:", error);}
+       // Log any errors
     }
     return userAddedTags;
   };
@@ -94,7 +95,7 @@ function PostCreateForm() {
         const tagsResponse = await createTags(tags);
         tagsResponse.forEach((tag) => formData.append("tags", tag.id));
       }
-
+      formData.getAll("tags");
       const { data } = await axiosReq.post("/posts/", formData);
       history.push(`/posts/${data.id}`);
     } catch (error) {
