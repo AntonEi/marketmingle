@@ -25,5 +25,9 @@
 }
 
 i:hover {
+    color: rgb(108, 114, 119)!important; 
+}
+
+a:hover {
     color: rgb(108, 114, 119); 
 }

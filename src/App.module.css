@@ -40,7 +40,7 @@
   }
   
   a:hover i {
-    color: #2142b2;
+    color:  rgb(108, 114, 119); 
     transition: color ease-in-out 0.3s;
   }
   
