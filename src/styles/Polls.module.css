@@ -20,13 +20,15 @@
   }
   
   .polls-choice button {
-    background-color: #38424b;
-    color: #fff;
+    width: 250px; /* Set the width of each button */
+    height: 45px; /* Set the height of each button */
+    padding: 5px 10px; /* Adjust padding as needed */
     border: none;
-    padding: 10px 60px;
+    background-color: #38424b; /* Set background color */
+    color: #ffffff; /* Set text color */
     cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, color 0.3s; /* Add transition for smooth hover effect */
+    border-radius: 10px;
   }
   
   .polls-choice button:hover {

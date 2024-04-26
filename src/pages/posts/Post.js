@@ -169,7 +169,9 @@ const Post = (props) => {
       </div>
       <div className={styles.imageAndContent}>
         <div className={styles.textContent}>
+          <Link to={`/posts/${id}`}>
           {title && <Card.Title className={styles.title}>{title}</Card.Title>}
+          </Link>
           {content && (
             <>
               <Card.Text className={styles.contentText}>
@@ -207,12 +209,7 @@ const Post = (props) => {
             </Link>
             {comments_count} comments
           </div>
-        </div>
-        <Link to={`/posts/${id}`} className={styles.imageLink}>
-          <Card.Img src={image} alt={title} className={styles.image} />
-        </Link>
-      </div>
-      <div className={styles.TagsContainer}>
+          <div className={styles.TagsContainer}>
         {tags_data && tags_data.length > 0 ? (
           <>
             <span>Tags: </span>
@@ -221,13 +218,18 @@ const Post = (props) => {
                 key={tag.id}
                 pill
                 variant="secondary"
-                className="mr-2 mb-4"
+                className=""
               >
                 {tag.name}
               </Badge>
             ))}
           </>
         ) : null}
+      </div>
+        </div>
+        <Link to={`/posts/${id}`} className={styles.imageLink}>
+          <Card.Img src={image} alt={title} className={styles.image} />
+        </Link>
       </div>
     </Card>
   );

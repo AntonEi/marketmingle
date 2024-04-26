@@ -94,3 +94,25 @@
 .Badge {
   margin-bottom: 4px; /* Add space between tags */
 }
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .imageAndContent {
+    flex-direction: column; /* Stack content vertically on smaller screens */
+  }
+
+  .imageLink {
+    position: relative; /* Reset position to relative */
+    width: 100%; /* Set width to full width of the container */
+    margin-bottom: 1rem; /* Add spacing between image and content */
+  }
+
+  .image {
+    max-height: 300px; /* Adjust max-height for smaller screens */
+  }
+
+  .textContent {
+    max-width: 100%; /* Set maximum width to full width of the container */
+    padding-left: 0; /* Remove left padding */
+  }
+}
