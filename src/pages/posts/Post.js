@@ -47,6 +47,7 @@ const Post = (props) => {
   const [dislikeImage, setDislikeImage] = useState(dislikeIcon);
   const [liked, setLiked] = useState(like_id ? true : false);
   const [disliked, setDisliked] = useState(dislike_id ? true : false);
+  const [showFullContent, setShowFullContent] = useState(false);
 
   const handleEdit = () => {
     history.push(`/posts/${id}/edit`);
@@ -143,7 +144,10 @@ const Post = (props) => {
       setDislikeImage(dislike3);
     }
   }, [disliked]);
-  
+
+  const toggleContent = () => {
+    setShowFullContent(!showFullContent);
+  };
 
   const postBorderColor = likes_count > dislikes_count ? styles.greenBorder : dislikes_count > likes_count ? styles.redBorder : '';
   return (
@@ -166,7 +170,18 @@ const Post = (props) => {
       <div className={styles.imageAndContent}>
         <div className={styles.textContent}>
           {title && <Card.Title className={styles.title}>{title}</Card.Title>}
-          {content && <Card.Text className={styles.contentText}>{content}</Card.Text>}
+          {content && (
+            <>
+              <Card.Text className={styles.contentText}>
+                {showFullContent ? content : `${content.substring(0, 100)}...`}
+              </Card.Text>
+              {content.length > 100 && (
+                <span className={styles.readMoreLink} onClick={toggleContent}>
+                  {showFullContent ? "Read Less" : "Read More"}
+                </span>
+              )}
+            </>
+          )}
           <div className={styles.PostBar}>
             {/* Like button */}
             <OverlayTrigger
@@ -198,22 +213,22 @@ const Post = (props) => {
         </Link>
       </div>
       <div className={styles.TagsContainer}>
-          {tags_data && tags_data.length > 0 ? (
-            <>
-              <span>Tags: </span>
-              {tags_data.map((tag) => (
-                <Badge
-                  key={tag.id}
-                  pill
-                  variant="secondary"
-                  className="mr-2 mb-4"
-                >
-                  {tag.name}
-                </Badge>
-              ))}
-            </>
-          ) : null}
-        </div>
+        {tags_data && tags_data.length > 0 ? (
+          <>
+            <span>Tags: </span>
+            {tags_data.map((tag) => (
+              <Badge
+                key={tag.id}
+                pill
+                variant="secondary"
+                className="mr-2 mb-4"
+              >
+                {tag.name}
+              </Badge>
+            ))}
+          </>
+        ) : null}
+      </div>
     </Card>
   );
 };

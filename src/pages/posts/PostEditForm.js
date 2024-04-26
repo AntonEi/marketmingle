@@ -13,6 +13,7 @@ import btnStyles from "../../styles/Button.module.css";
 import Asset from "../../components/Asset";
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosReq } from "../../api/axiosDefaults";
+import FormTagsField from "../../components/FormTagsField";
 
 function PostEditForm() {
   const [errors, setErrors] = useState({});
@@ -20,27 +21,58 @@ function PostEditForm() {
     title: "",
     content: "",
     image: "",
+    tags: [],
   });
-  const { title, content, image } = postData;
+  const { title, content, image, tags } = postData;
   const imageInput = useRef(null);
   const history = useHistory();
   const { id } = useParams();
+  const [initialTags, setInitialTags] = useState(null);
+  const [hasLoaded, setHasLoaded] = useState(false);
 
   useEffect(() => {
-    const handleMount = async () => {
+    const fetchPost = async () => {
       try {
-        const { data } = await axiosReq.get(`/posts/${id}/`);
-        const { title, content, image, is_owner } = data;
+        const response = await axiosReq.get(`/posts/${id}`);
+        const data = response.data;
+        const { title, content, tags_data, image, is_owner } =
+          data;
 
         is_owner ? setPostData({ title, content, image }) : history.push("/");
-      } catch (err) {
-      }
+
+        if (tags_data.length > 0) {
+          const fetchedTags = [];
+          for (let tag of tags_data) {
+            fetchedTags.push(tag.name);
+          }
+          setInitialTags(fetchedTags);
+        }
+
+        setPostData((prevData) => ({
+          ...prevData,
+          title,
+          content,
+          image,
+        }));
+
+        setHasLoaded(true);
+      } catch (error) {}
     };
 
-    handleMount();
-  }, [history, id]);
+    setHasLoaded(false);
 
-  const handleChange = (event) => {
+    fetchPost();
+  }, [id, history]);
+
+  const handleTagsChange = (newTags) => {
+    setPostData((prevPostData) => ({
+      ...prevPostData,
+      tags: newTags,
+    }));
+  };
+
+
+  const handleChangeField = (event) => {
     setPostData({
       ...postData,
       [event.target.name]: event.target.value,
@@ -57,24 +89,59 @@ function PostEditForm() {
     }
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const formData = new FormData();
+  const createTags = async (tags) => {
+    const userAddedTags = [];
 
-    formData.append("title", title);
-    formData.append("content", content);
+    for (let tag of tags) {
+      try {
+        const response = await axiosReq.get(`/tags/?search=${tag}`);
 
-    if (imageInput?.current?.files[0]) {
-        formData.append("image", imageInput.current.files[0]);
+        if (response.data.results && response.data.results.length > 0) {
+          const exactMatch = response.data.results.find(
+            (foundTag) => foundTag.name === tag
+          );
+
+          if (exactMatch) {
+            userAddedTags.push(exactMatch);
+          } else {
+            const response = await axiosReq.post("/tags/", { name: tag });
+            userAddedTags.push(response.data);
+          }
+        } else {
+          const response = await axiosReq.post("/tags/", { name: tag });
+          userAddedTags.push(response.data);
+        }
+      } catch (error) {}
     }
 
+    return userAddedTags;
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+  
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("content", content);
+  
+    if (imageInput?.current?.files[0]) {
+      formData.append("image", imageInput.current.files[0]);
+  }
+  
     try {
-        await axiosReq.put(`/posts/${id}/`, formData);
-        history.push(`/posts/${id}`);
-    } catch (err) {
-      if (err.response?.status !== 401) {
-        setErrors(err.response?.data);
+      if (tags) {
+        const tagsResponse = await createTags(tags);
+        tagsResponse.forEach((tag) => {
+          if (tag.id) {
+            formData.append("tags", tag.id);
+          }
+        });
       }
+  
+      await axiosReq.put(`/posts/${id}/`, formData);
+      history.push(`/posts/${id}`);
+    } catch (error) {
+      setErrors(error.response.data);
     }
   };
 
@@ -87,6 +154,8 @@ function PostEditForm() {
 
   return (
     <Form onSubmit={handleSubmit}>
+      {hasLoaded ? (
+          <>
       <Container>
         <Row>
           <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
@@ -94,31 +163,44 @@ function PostEditForm() {
               className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
             >
               <div className="text-center">
-                <Form.Group>
-                  <Form.Label>Title</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="title"
-                    value={title}
-                    onChange={handleChange}
-                  />
-                </Form.Group>
-                {errors?.title?.map((message, idx) => (
+              <Form.Group controlId="title">
+                <Form.Label className="d-none">Title</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter title"
+                  name="title"
+                  value={title}
+                  onChange={handleChangeField}
+                  aria-label="Title"
+                />
+              </Form.Group>
+              {!title &&
+                errors.title?.map((message, idx) => (
                   <Alert variant="warning" key={idx}>
                     {message}
                   </Alert>
                 ))}
-                <Form.Group>
-                  <Form.Label>Content</Form.Label>
+                <Form.Group controlId="content">
+                  <Form.Label className="d-none">Text</Form.Label>
                   <Form.Control
+                    aria-label="Text"
                     as="textarea"
-                    rows={6}
+                    placeholder="Text (Optional)"
                     name="content"
                     value={content}
-                    onChange={handleChange}
+                    rows={5}
+                    onChange={handleChangeField}
                   />
                 </Form.Group>
-                {errors?.content?.map((message, idx) => (
+                {errors.content?.map((message, idx) => (
+                  <Alert variant="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))}
+                <FormTagsField 
+                initialTags={initialTags}
+                handleTagsChange={handleTagsChange} />
+                {errors.tags?.map((message, idx) => (
                   <Alert variant="warning" key={idx}>
                     {message}
                   </Alert>
@@ -186,15 +268,19 @@ function PostEditForm() {
                   className={`${btnStyles.Button} ${btnStyles.Blue}`}
                   type="submit"
                 >
-                  Save
+                  Create
                 </Button>
               </div>
             </Container>
           </Col>
         </Row>
       </Container>
+      </>
+      ) : (
+        <Asset spinner />
+      )}
     </Form>
   );
-}
+};
 
 export default PostEditForm;

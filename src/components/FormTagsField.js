@@ -44,6 +44,7 @@ const FormTagsField = ({ initialTags, handleTagsChange }) => {
       setIsDisabled(false);
     }
     handleTagsChange(userTags);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [userTags]);
 
   return (
