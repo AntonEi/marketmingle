@@ -34,3 +34,59 @@ The live link to the site can be found here - [MarketMingle](https://marketmingl
 
 All features have been prioritized and developed in response to the needs outlined in the user stories during the planning stage.
 
+### Existing Features
+
+#### Authentication
+
+- Secure registraion and login process to ensure user authenticity.
+- Once registered and logged in, users can set a new username and password in their profile.
+- Logged out users have limited access to the features:
+    - They won't see bull bear in the nav. they also won't see the poll.
+    - They will be redirected back to the home page if they try access pages restricted to logged in users, like create a post.
+
+<details><summary>Logged out user</summary>
+<img src="">
+</details>
+<details><summary>Logged in user</summary>
+<img src="">
+</details>
+<details><summary>Account settings</summary>
+<img src="">
+</details>
+<details><summary>Change username</summary>
+<img src="">
+</details>
+<details><summary>Change password</summary>
+<img src="">
+</details>
+
+#### Navigation
+
+- Responsive top navigation bar adaptable to various screen sizes.
+- For logged-in users, additional options are accessible, including direct links to their profiles, ability to create posts, see the posts that they bullish or bearish, and logout option.
+- On mobile size they can see a hambuger logo in the left corner.
+
+<details><summary>Navigation</summary>
+<img src="">
+</details>
+<details><summary>Navigation mobile</summary>
+<img src="">
+</details>
+
+#### Profiles
+
+- Personalized profiles showcasing user bio and posts.
+- Displays follower counts and provides follow/unfollow functionality directly from the profile view if the visiting user is logged in.
+- Features an edit option for users to update their profile bio and avatar.
+
+<details><summary>Own profile</summary>
+<img src="">
+</details>
+<details><summary>Profile - looged in</summary>
+<img src="">
+</details>
+<details><summary>Profile - looged out</summary>
+<img src="">
+</details>
+
+
