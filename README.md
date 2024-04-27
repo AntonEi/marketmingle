@@ -89,4 +89,32 @@ All features have been prioritized and developed in response to the needs outlin
 <img src="">
 </details>
 
+#### Home Page / Posts
 
+- The home page dynamically adjusts based on user authentication status.
+- When logged out displays all posts.
+- When logged in you can see the polls and follow users.
+
+<details><summary>Posts - looged out</summary>
+<img src="documentation/readme_images/posts/posts_loggedout.png">
+</details>
+<details><summary>Posts - looged in</summary>
+<img src="documentation/readme_images/posts/posts_loggedin.png">
+</details>
+
+#### Add / Edit / Delete Post
+
+- Users can add new posts, specifying details such as an image, title, content, and location.
+- Users can add up to 5 tags to their posts.
+- Editing functionality enables users to update their posts, ensuring the information remains relevant and accurate.
+- Users can delete their own posts. Deletion must be confirmed.
+
+<details><summary>Add post</summary>
+<img src="documentation/readme_images/posts/add_post.png">
+</details>
+<details><summary>Edit post</summary>
+<img src="documentation/readme_images/posts/edit_post.png">
+</details>
+<details><summary>Delete post</summary>
+<img src="documentation/readme_images/posts/delete_post.png">
+</details>

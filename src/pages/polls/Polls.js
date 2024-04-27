@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from '../../styles/Polls.module.css'; // Adjust the import path based on your project structure
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { Link } from "react-router-dom";
 
 const Polls = () => {
   const [questions, setQuestions] = useState([]);
@@ -93,7 +94,11 @@ const Polls = () => {
   };
   
   if (needsLogin) {
-    return <div>Please log in to see the polls.</div>;
+    return (
+      <div>
+        Please <Link to="/signin">sign in</Link> to see the poll.
+      </div>
+    );
   }
 
   return (
