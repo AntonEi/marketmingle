@@ -45,19 +45,19 @@ All features have been prioritized and developed in response to the needs outlin
     - They will be redirected back to the home page if they try access pages restricted to logged in users, like create a post.
 
 <details><summary>Logged out user</summary>
-<img src="">
+<img src="ReadMe/pictures/logged-out-user.png">
 </details>
 <details><summary>Logged in user</summary>
-<img src="">
+<img src="ReadMe/pictures/logged-in-user.png">
 </details>
 <details><summary>Account settings</summary>
-<img src="">
+<img src="ReadMe/pictures/account-settings.png">
 </details>
 <details><summary>Change username</summary>
-<img src="">
+<img src="ReadMe/pictures/change-username.png">
 </details>
 <details><summary>Change password</summary>
-<img src="">
+<img src="ReadMe/pictures/change-password.png">
 </details>
 
 #### Navigation
@@ -67,10 +67,10 @@ All features have been prioritized and developed in response to the needs outlin
 - On mobile size they can see a hambuger logo in the left corner.
 
 <details><summary>Navigation</summary>
-<img src="">
+<img src="ReadMe/pictures/navigation.png">
 </details>
 <details><summary>Navigation mobile</summary>
-<img src="">
+<img src="ReadMe/pictures/navigation-mobile.png">
 </details>
 
 #### Profiles
@@ -80,13 +80,13 @@ All features have been prioritized and developed in response to the needs outlin
 - Features an edit option for users to update their profile bio and avatar.
 
 <details><summary>Own profile</summary>
-<img src="">
+<img src="ReadMe/pictures/own-profile.png">
 </details>
-<details><summary>Profile - looged in</summary>
-<img src="">
+<details><summary>Profile - logged in</summary>
+<img src="ReadMe/pictures/profile-logged-in.png">
 </details>
-<details><summary>Profile - looged out</summary>
-<img src="">
+<details><summary>Profile - logged out</summary>
+<img src="ReadMe/pictures/profile-logged-out.png">
 </details>
 
 #### Home Page / Posts
@@ -95,26 +95,88 @@ All features have been prioritized and developed in response to the needs outlin
 - When logged out displays all posts.
 - When logged in you can see the polls and follow users.
 
-<details><summary>Posts - looged out</summary>
-<img src="documentation/readme_images/posts/posts_loggedout.png">
+<details><summary>Posts - logged out</summary>
+<img src="ReadMe/pictures/profile-logged-out.png">
 </details>
-<details><summary>Posts - looged in</summary>
-<img src="documentation/readme_images/posts/posts_loggedin.png">
+<details><summary>Posts - logged in</summary>
+<img src="ReadMe/pictures/profile-logged-in.png">
 </details>
 
 #### Add / Edit / Delete Post
 
-- Users can add new posts, specifying details such as an image, title, content, and location.
-- Users can add up to 5 tags to their posts.
+- Users can add new posts, specifying details such as an image, title and content.
+- Users can add tags to their posts.
 - Editing functionality enables users to update their posts, ensuring the information remains relevant and accurate.
-- Users can delete their own posts. Deletion must be confirmed.
+- Users can delete their own posts.
 
 <details><summary>Add post</summary>
-<img src="documentation/readme_images/posts/add_post.png">
+<img src="ReadMe/pictures/add-post.png">
 </details>
 <details><summary>Edit post</summary>
-<img src="documentation/readme_images/posts/edit_post.png">
+<img src="ReadMe/pictures/edit-post.png">
 </details>
 <details><summary>Delete post</summary>
-<img src="documentation/readme_images/posts/delete_post.png">
+<img src="ReadMe/pictures/delete-post.png">
+</details>
+
+#### Follow / Unfollow Profiles
+
+- Users can follow or unfollow others directly from their profiles, facilitating community building and interaction.
+- The following system updates content feeds to include posts from followed users.
+- Following / unfollowing users in the Feed Page updates instantly the page to include / exclude the posts.
+
+<details><summary>Follow - popular profiles</summary>
+<img src="ReadMe/pictures/most-followed-profiles.png">
+</details>
+<details><summary>Follow - Profile page</summary>
+<img src="ReadMe/pictures/follow-profile-page.png">
+</details>
+
+#### Comment and Edit / Delete Comments (Posts and Events)
+
+- Commenting feature available on posts for users to engage in discussions.
+- Provides options to edit or delete their comments, ensuring flexibility in communication.
+
+<details><summary>Comment field</summary>
+<img src="ReadMe/pictures/comment-field.png">
+</details>
+<details><summary>Comment</summary>
+<img src="ReadMe/pictures/comment.png">
+</details>
+<details><summary>Edit Comment</summary>
+<img src="ReadMe/pictures/edit-comment.png">
+</details>
+<details><summary>Delete Comment</summary>
+<img src="ReadMe/pictures/delete-comment.png">
+</details>
+
+#### Search
+
+- Comprehensive search functionality that applies to posts.
+
+<details><summary>Search - post</summary>
+<img src="ReadMe/pictures/search.png">
+</details>
+
+#### bullish / bearish
+
+- bullish / bearish functionality for posts to express appreciation or interest.
+- Users can be bullish / bearish posts, if the post is bullish the post will glow in green and if the post is bearish the post will glow in red. with updates reflected in real-time.
+
+<details><summary>Bullish post</summary>
+<img src="ReadMe/pictures/bullish-post.png">
+</details>
+<details><summary>Bearish post</summary>
+<img src="ReadMe/pictures/bearish post.png">
+</details>
+
+#### Poll
+- Logged-in users can participate in the poll.
+- You can only answer the poll once, and if you choose one answer, the other options will turn grey.
+
+<details><summary>Poll</summary>
+<img src="ReadMe/pictures/poll.png">
+</details>
+<details><summary>Poll pressed</summary>
+<img src="ReadMe/pictures/poll-pressed.png">
 </details>
