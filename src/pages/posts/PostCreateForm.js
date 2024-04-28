@@ -73,7 +73,7 @@ function PostCreateForm() {
           const response = await axiosReq.post("/tags/", { name: tag });
           userAddedTags.push(response.data);
         }
-      } catch (error) {console.error("Error creating tag:", error);}
+      } catch (error) {}
        // Log any errors
     }
     return userAddedTags;

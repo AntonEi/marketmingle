@@ -10,7 +10,7 @@
 }
 
 .Active {
-    color: rgb(97, 133, 150);
+    color: rgb(0, 255, 255);
 }
 
 .Bullish {
@@ -18,7 +18,7 @@
 }
 
 .Bearish {
-    color: #ff0000; 
+    color: #fa6161; 
 }
 .NavLink:hover {
     color: rgb(108, 114, 119); 

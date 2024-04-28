@@ -204,8 +204,8 @@ const Post = (props) => {
             {dislikes_count}
 
             {/* Comments */}
-            <Link to={`/posts/${id}`} className={styles.customMargin}>
-              <i className={`far fa-comments ${styles.smallIcon}`} />
+            <Link to={`/posts/${id}`} className={styles.customMargin} >
+              <i className={`far fa-comments ${styles.smallIcon}`} title={`View comments for ${title}`} />
             </Link>
             {comments_count} comments
           </div>

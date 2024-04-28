@@ -4,7 +4,39 @@ MarketMingle is a web application aimed at providing a platform for users to dis
 
 The live link to the site can be found here - [MarketMingle](https://marketmingle-d94891f1357b.herokuapp.com/)
 
-![site](docs/readme_images/stockforum.png)
+![site](readme/pictures/marketmingle-site.png)
+
+
+- [MarketMingle](#marketmingle)
+  * [Site Owner Goals](#site-owner-goals)
+  * [User Stories for "marketmingle"](#user-stories-for--marketmingle-)
+  * [Features](#features)
+    + [Existing Features](#existing-features)
+      - [Authentication](#authentication)
+      - [Navigation](#navigation)
+      - [Profiles](#profiles)
+      - [Home Page / Posts](#home-page---posts)
+      - [Add / Edit / Delete Post](#add---edit---delete-post)
+      - [Follow / Unfollow Profiles](#follow---unfollow-profiles)
+      - [Comment and Edit / Delete Comments (Posts and Events)](#comment-and-edit---delete-comments--posts-and-events-)
+      - [Search](#search)
+      - [bullish / bearish](#bullish---bearish)
+      - [Poll](#poll)
+      - [Tags](#tags)
+    + [Future Features](#future-features)
+      - [Short term goals](#short-term-goals)
+      - [Long term goals](#long-term-goals)
+    + [Wireframes](#wireframes)
+    + [Colors](#colors)
+    + [Fonts](#fonts)
+  * [Technologies Used](#technologies-used)
+    + [JavaScript and React Libraries](#javascript-and-react-libraries)
+    + [Other Technologies](#other-technologies)
+  * [Testing](#testing)
+  * [Deployment](#deployment)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
 ## Site Owner Goals
 

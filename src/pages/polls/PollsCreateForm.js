@@ -13,7 +13,6 @@ const PollsCreateForm = () => {
       const response = await axios.get("/questions/");
       setPolls(response.data);
     } catch (error) {
-      console.error("Error fetching polls:", error);
     }
   };
 
@@ -52,7 +51,6 @@ const PollsCreateForm = () => {
       // Fetch all polls again to update the list
       fetchPolls();
     } catch (error) {
-      console.error("Error creating poll:", error);
     }
   };
 
@@ -62,7 +60,6 @@ const PollsCreateForm = () => {
       // Fetch all polls again to update the list
       fetchPolls();
     } catch (error) {
-      console.error("Error deleting poll:", error);
     }
   };
 

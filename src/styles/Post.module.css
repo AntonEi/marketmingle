@@ -1,118 +1,118 @@
 .Post {
-  background-color: #ffffff;
-  border-radius: 18px;
-  margin-bottom: 16px;
-  position: relative;
-  overflow: hidden;
+    background-color: #ffffff;
+    border-radius: 18px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
 }
 
 .imageLink {
-  position: absolute;
-  left: auto;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 33.33%;
+    position: absolute;
+    left: auto;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 33.33%;
 }
 
 .image {
-  max-height: 500px;
-  object-fit: cover;
+    max-height: 500px;
+    object-fit: cover;
 }
 
 .textContent {
-  max-width: calc(100% - 33.33% - 2rem);
-  padding-left: 1rem;
-  font-size: 13px;
+    max-width: calc(100% - 33.33% - 2rem);
+    padding-left: 1rem;
+    font-size: 13px;
 }
 
 .imageAndContent {
-  display: flex;
-  align-items: center;
-  margin: 0.5rem;
+    display: flex;
+    align-items: center;
+    margin: 0.5rem;
 }
 
 .avatarLink {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .usernameDate {
-  margin-left: 0.5rem;
+    margin-left: 0.5rem;
 }
 
 .avatarContainer {
-  display: flex;
-  align-items: baseline;
-  margin-top: 1rem;
-  margin-left: 0.5rem;
+    display: flex;
+    align-items: baseline;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
 }
 
 .avatarLink {
-  margin-right: 1rem;
+    margin-right: 1rem;
 }
 
 .avatarContainer span:last-child {
-  margin-left: 5rem;
+    margin-left: 5rem;
 }
 
 .smallIcon {
-  font-size: 18px;
+    font-size: 18px;
 }
 
 .customMargin {
-  margin-left: 100px;
+    margin-left: 100px;
 }
 
 /* Post.module.css */
 
 .smallpictures {
-  height: 40px;
+    height: 40px;
 }
 
 .greenBorder {
-  border: 2px solid #28a745;
+    border: 2px solid #28a745;
 }
 
 .redBorder {
-  border: 2px solid #dc3545;
+    border: 2px solid #dc3545;
 }
 
 .readMoreLink {
-  color: #3583dc;
+    color: #003cff;
 }
 
 /* Added styles for tags */
 .TagsContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Center the tags horizontally */
-  flex-wrap: wrap; /* Allow tags to wrap to the next line if necessary */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the tags horizontally */
+    flex-wrap: wrap; /* Allow tags to wrap to the next line if necessary */
 }
 
 /* Styling for individual tags */
 .Badge {
-  margin-bottom: 4px; /* Add space between tags */
+    margin-bottom: 4px; /* Add space between tags */
 }
 
 /* Media query for smaller screens */
 @media (max-width: 768px) {
   .imageAndContent {
-    flex-direction: column; /* Stack content vertically on smaller screens */
+        flex-direction: column; /* Stack content vertically on smaller screens */
   }
 
   .imageLink {
-    position: relative; /* Reset position to relative */
-    width: 100%; /* Set width to full width of the container */
-    margin-bottom: 1rem; /* Add spacing between image and content */
+        position: relative; /* Reset position to relative */
+        width: 100%; /* Set width to full width of the container */
+        margin-bottom: 1rem; /* Add spacing between image and content */
   }
 
   .image {
-    max-height: 300px; /* Adjust max-height for smaller screens */
+        max-height: 300px; /* Adjust max-height for smaller screens */
   }
 
   .textContent {
-    max-width: 100%; /* Set maximum width to full width of the container */
-    padding-left: 0; /* Remove left padding */
+        max-width: 100%; /* Set maximum width to full width of the container */
+        padding-left: 0; /* Remove left padding */
   }
 }
