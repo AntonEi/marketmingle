@@ -610,27 +610,65 @@ MarketMingle utilizes the Roboto font family to deliver a modern and clean typog
 
 The full testing documentation can be found in [TESTING.md](./TESTING.md)
 
-## Deployment
+## Deployment and Development
+- From the begining of development, the project started out and continued from the tutorial provided by Code Institute "Moments" unit on the "Advanced Front-end specialization" module.
 
-The React project has been created within the existing DRF Hoodsap API. The steps followed are:
+The project was developed using GitHub and GitPod platforms...
+- Navigate to: "Repositories" and create "New".
+- Mark the following fields: ✓ Public ✓ Add a README file.
+- Select template: "Code-Institute-Org/python-essentials-template".
+- Add a Repository name
+- ...and create Repository.
 
-1. Open the workspace for your DRF project
-2. Open the terminal window and create a new folder called "frontend" in the root directory
-3. Change directory to be inside the frontend folder with the following command
-4. From inside the frontend directory, run the following command to create a new React app and install all the working dependencies used in the Moments application:
-````
-npx create-react-app . --template git+https://github.com/Code-Institute-Org/cra-template-moments.git --use-npm
-````
-5. Enter y to confirm and then click enter
-6. Open the package.json file in the frontend directory, and at the bottom of the file, add a new key to the JSON object
-````
-"proxy": "http://localhost:8000/"
-````
-7. Once the BE is set up, run the following command in the frontend directory:
-```npm run build && mv build ../staticfiles/.```
+... and suffered various executions using the inbuild Terminal.
 
-You will need to re-run this command any time you want to deploy changes to the static files in your project, including the React code. To do this, you need to delete the existing build folder and rebuild it.
-This command will delete the old folder and replace it with the new one:
-````
-npm run build && rm -rf ../staticfiles/build && mv build ../staticfiles/.
-````
+For Commits on this project, the following commands ran:
+- ```git add .``` <- Stages before commiting.
+- ```git commit -m "written imperative declaration"``` <- Declares changes and updates.
+- ```git push``` <- Push all updates to the GitHub Repository.
+
+Through development the following commands ran:
+- ```npm install``` <- Installs Reacts dependencies
+- ```npm run start``` <- Runs the app in local environment
+
+Additionally, the following:
+- ```npm install react``` <- Installs React library. JavaScript library for building user interfaces.
+- ```npm install react-router-dom``` <- Installs React Rounter DOM. Library for handling navigation and routing in React applications.
+- ```npm install axios``` <- Installs Axios library. Library used for making HTTP requests.
+- ```npm install react-bootstrap``` <- Installs React Bootstrap. Library components that have been re-implemented using React.
+- ```npm install react-modal``` <- Installs Pop up Modal. Library for using modal dialogs and pop-up windows.
+
+The database is being hosted on ElephantSQL:
+- Create an account and select TinyTurtle plan.
+- From Details collect the URL and paste it on Heroku Config Var.
+
+The static files are being hosted on Cloudinary:
+- Create and account.
+- From the dashboard collect the API Environment variable and paste it on Heroku Config VAR.
+
+...and hosted on Heroku:
+- Create a Heroku account (Code Institute students can apply for the Student Pack)
+- Navigate to: "Create new app" add a unique name "connect-network" and select your region. Click "Create App"
+- Head over to "Settings" tab and apply the respective config VARs
+- Move to "Deploy" section and select "Github" method
+- From here search for the repository name and chose the respitory from the GitHub account.
+- Hit "Connect" and "Enable Automatic Deploys" to keep the the repository in parallel to Heroku.
+- Manually "Deploy Main Branch".
+- Upon successful deployment, retrieve the link for the mock terminal.
+- The live app can be found [here](https://marketmingle-d94891f1357b.herokuapp.com/).
+
+the backend can be found [here](https://github.com/AntonEi/mmapi)
+
+## Credits
+
+- [W3Schools](https://www.w3schools.com/)
+- [Django Docs](https://docs.djangoproject.com/en/4.0/)
+- [Stack Overflow](https://stackoverflow.com/)
+- [Code Institute - moments Walkthrough Project](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+RA101+2021_T3/courseware/70a8c55db0504bbdb5bcc3bfcf580080/f50e8ca2d7f6497c9d9857048d973ae4/)
+- [fsjavier - hoodsap project. Used for the tags functionality](https://github.com/fsjavier/hoodsap-api/tree/main/tags)
+
+## Acknowledgments
+
+Many thanks to my mentor Antonio for his support and advice. Thanks to The Code Institute tutoring for helping me out.
+
+Also, many thanks to my fellow student Elin Dalenbäck.
