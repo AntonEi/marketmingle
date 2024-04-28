@@ -27,7 +27,7 @@ I can participate in polls created by the admin to share my opinion on various t
 - Users should only be allowed to vote once in each poll to maintain voting integrity and accuracy.
 - The poll results should be visible to all users after voting, providing transparency and engagement.
 </details>
-<details><summary>Tags</summary>
+<details><summary> Tags</summary>
 
 ### As a logged-in user
 I want to be able to assign tags or categories to my notes
@@ -357,19 +357,19 @@ All features have been prioritized and developed in response to the needs outlin
     - They will be redirected back to the home page if they try access pages restricted to logged in users, like create a post.
 
 <details><summary>Logged out user</summary>
-<img src="ReadMe/pictures/logged-out-user.png">
+<img src="readme/pictures/logged-out-user.png">
 </details>
 <details><summary>Logged in user</summary>
-<img src="ReadMe/pictures/logged-in-user.png">
+<img src="readme/pictures/logged-in-user.png">
 </details>
 <details><summary>Account settings</summary>
-<img src="ReadMe/pictures/account-settings.png">
+<img src="readme/pictures/account-settings.png">
 </details>
 <details><summary>Change username</summary>
-<img src="ReadMe/pictures/change-username.png">
+<img src="readme/pictures/change-username.png">
 </details>
 <details><summary>Change password</summary>
-<img src="ReadMe/pictures/change-password.png">
+<img src="readme/pictures/change-password.png">
 </details>
 
 #### Navigation
@@ -379,10 +379,10 @@ All features have been prioritized and developed in response to the needs outlin
 - On mobile size they can see a hambuger logo in the left corner.
 
 <details><summary>Navigation</summary>
-<img src="ReadMe/pictures/navigation.png">
+<img src="readme/pictures/navigation.png">
 </details>
 <details><summary>Navigation mobile</summary>
-<img src="ReadMe/pictures/navigation-mobile.png">
+<img src="readme/pictures/navigation-mobile.png">
 </details>
 
 #### Profiles
@@ -392,13 +392,13 @@ All features have been prioritized and developed in response to the needs outlin
 - Features an edit option for users to update their profile bio and avatar.
 
 <details><summary>Own profile</summary>
-<img src="ReadMe/pictures/own-profile.png">
+<img src="readme/pictures/own-profile.png">
 </details>
 <details><summary>Profile - logged in</summary>
-<img src="ReadMe/pictures/profile-logged-in.png">
+<img src="readme/pictures/profile-logged-in.png">
 </details>
 <details><summary>Profile - logged out</summary>
-<img src="ReadMe/pictures/profile-logged-out.png">
+<img src="readme/pictures/profile-logged-out.png">
 </details>
 
 #### Home Page / Posts
@@ -408,10 +408,10 @@ All features have been prioritized and developed in response to the needs outlin
 - When logged in you can see the polls and follow users.
 
 <details><summary>Posts - logged out</summary>
-<img src="ReadMe/pictures/profile-logged-out.png">
+<img src="readme/pictures/profile-logged-out.png">
 </details>
 <details><summary>Posts - logged in</summary>
-<img src="ReadMe/pictures/profile-logged-in.png">
+<img src="readme/pictures/profile-logged-in.png">
 </details>
 
 #### Add / Edit / Delete Post
@@ -422,13 +422,13 @@ All features have been prioritized and developed in response to the needs outlin
 - Users can delete their own posts.
 
 <details><summary>Add post</summary>
-<img src="ReadMe/pictures/add-post.png">
+<img src="readme/pictures/add-post.png">
 </details>
 <details><summary>Edit post</summary>
-<img src="ReadMe/pictures/edit-post.png">
+<img src="readme/pictures/edit-post.png">
 </details>
 <details><summary>Delete post</summary>
-<img src="ReadMe/pictures/delete-post.png">
+<img src="readme/pictures/delete-post.png">
 </details>
 
 #### Follow / Unfollow Profiles
@@ -438,10 +438,10 @@ All features have been prioritized and developed in response to the needs outlin
 - Following / unfollowing users in the Feed Page updates instantly the page to include / exclude the posts.
 
 <details><summary>Follow - popular profiles</summary>
-<img src="ReadMe/pictures/most-followed-profiles.png">
+<img src="readme/pictures/most-followed-profiles.png">
 </details>
 <details><summary>Follow - Profile page</summary>
-<img src="ReadMe/pictures/follow-profile-page.png">
+<img src="readme/pictures/follow-profile-page.png">
 </details>
 
 #### Comment and Edit / Delete Comments (Posts and Events)
@@ -450,16 +450,16 @@ All features have been prioritized and developed in response to the needs outlin
 - Provides options to edit or delete their comments, ensuring flexibility in communication.
 
 <details><summary>Comment field</summary>
-<img src="ReadMe/pictures/comment-field.png">
+<img src="readme/pictures/comment-field.png">
 </details>
 <details><summary>Comment</summary>
-<img src="ReadMe/pictures/comment.png">
+<img src="readme/pictures/comment.png">
 </details>
 <details><summary>Edit Comment</summary>
-<img src="ReadMe/pictures/edit-comment.png">
+<img src="readme/pictures/edit-comment.png">
 </details>
 <details><summary>Delete Comment</summary>
-<img src="ReadMe/pictures/delete-comment.png">
+<img src="readme/pictures/delete-comment.png">
 </details>
 
 #### Search
@@ -467,7 +467,7 @@ All features have been prioritized and developed in response to the needs outlin
 - Comprehensive search functionality that applies to posts.
 
 <details><summary>Search - post</summary>
-<img src="ReadMe/pictures/search.png">
+<img src="readme/pictures/search.png">
 </details>
 
 #### bullish / bearish
@@ -476,10 +476,10 @@ All features have been prioritized and developed in response to the needs outlin
 - Users can be bullish / bearish posts, if the post is bullish the post will glow in green and if the post is bearish the post will glow in red. with updates reflected in real-time.
 
 <details><summary>Bullish post</summary>
-<img src="ReadMe/pictures/bullish-post.png">
+<img src="readme/pictures/bullish-post.png">
 </details>
 <details><summary>Bearish post</summary>
-<img src="ReadMe/pictures/bearish post.png">
+<img src="readme/pictures/bearish post.png">
 </details>
 
 #### Poll
@@ -487,8 +487,118 @@ All features have been prioritized and developed in response to the needs outlin
 - You can only answer the poll once, and if you choose one answer, the other options will turn grey.
 
 <details><summary>Poll</summary>
-<img src="ReadMe/pictures/poll.png">
+<img src="readme/pictures/poll.png">
 </details>
 <details><summary>Poll pressed</summary>
-<img src="ReadMe/pictures/poll-pressed.png">
+<img src="readme/pictures/poll-pressed.png">
 </details>
+
+#### Tags
+- Logged-in users can add tags to there posts
+
+<details><summary>tags</summary>
+<img src="readme/pictures/tags.png">
+</details>
+<details><summary>tags input</summary>
+<img src="readme/pictures/tags-field.png">
+</details>
+
+### Future Features
+
+#### Short term goals
+
+- Real-Time Chat: Implement a real-time chat feature to facilitate instant communication among users.
+- Notification System: Introduce a notification system to alert users about new comments, likes, or followers.
+- Bookmarking Posts: Allow users to bookmark posts for later reference or reading.
+- Dark Mode: Introduce a dark mode option for users who prefer a darker interface.
+
+#### Long term goals
+
+- Virtual Trading: Introduce a virtual trading feature where users can simulate trades and track their performance without risking real money.
+- Advanced Analytics: Provide users with advanced analytics and insights into their trading performance based on their activity within the platform.
+- Social Trading: Implement social trading functionalities, allowing users to automatically copy trades of successful investors.
+- Premium Membership: Introduce a premium membership tier with access to exclusive features, content, and tools.
+
+### Wireframes
+
+
+The initial wireframes laid the foundation for MarketMingle's layout and functionality. As development progressed, I implemented several enhancements and design adjustments to enhance user experience and interaction. Additionally, I made minor refinements to improve the platform's aesthetics and usability.
+
+<details><summary>Posts wireframe</summary>
+<img src="readme/wireframe/post-wireframe.png">
+</details>
+<details><summary>Login/out wireframe</summary>
+<img src="readme/wireframe/logout-wireframe.png">
+<img src="readme/wireframe/login-wireframe.png">
+</details>
+<details><summary>Profile wireframe</summary>
+<img src="readme/wireframe/profile-wireframe.png">
+</details>
+
+### Colors
+
+The color scheme for MarketMingle is carefully curated to create a dynamic yet inviting atmosphere:
+
+- Primary Color: Majorelle Blue takes center stage, infusing vibrancy and sophistication into the interface.
+- Background: Lavender Blush and Thistle offer a calming backdrop, promoting readability and usability.
+- Accent Colors: Raisin Black and Imperial Red are strategically employed to highlight important elements and interactive features, ensuring user engagement and attention.
+
+### Fonts
+MarketMingle utilizes the Roboto font family to deliver a modern and clean typographic experience. With its balanced proportions and versatile design, Roboto ensures readability across various devices and screen sizes. Its friendly yet professional appearance contributes to a seamless and engaging user interface, enhancing the overall user experience on the platform.
+
+## Technologies Used
+
+- React: Utilized as the core JavaScript library for building the user interface.
+- Create React App: Employed to initialize the React project, providing a standardized setup.
+
+### JavaScript and React Libraries
+
+- Axios: Used to make requests to the backend API.
+- Bootsrap and React Bootstrap: For responsive styling and layout design.
+- React Router: To enabled routing.
+- React Infinite Scroll Component: To add infinite scroll functionality.
+- JWT Decode: For decoding JSON Web Tokens for authentication purposes.
+
+### Other Technologies
+
+- [Heroku](https://dashboard.heroku.com/login) - was used as the cloud based platform to deploy the site on.
+- [GitHub](https://github.com/) - Used for version control and agile tool.
+- [Gitpod](https://gitpod.com/) As the IDE used to develop the application.
+- [Balsamiq](https://balsamiq.com/) - Used to generate Wireframe images.
+- [Google Fonts](https://fonts.google.com/) - Used to import and alter fonts on the page.
+- [Favicon](https://favicon.io/) - Used to create the favicon.
+- [Adobe Express](https://new.express.adobe.com/) Used to create the logo.
+- [W3C](https://www.w3.org/) - Used for HTML & CSS Validation.
+- [PostgreSQL](https://www.postgresql.org/) was used as the database for this project.
+- [Lucidchart](https://lucid.app/documents#/dashboard) - used to create the database schema design
+- [Chrome Dev Tools](https://developer.chrome.com/docs/devtools/) - Used for overall development and tweaking, including testing responsiveness and performance.
+
+
+## Testing
+
+The full testing documentation can be found in [TESTING.md](./TESTING.md)
+
+## Deployment
+
+The React project has been created within the existing DRF Hoodsap API. The steps followed are:
+
+1. Open the workspace for your DRF project
+2. Open the terminal window and create a new folder called "frontend" in the root directory
+3. Change directory to be inside the frontend folder with the following command
+4. From inside the frontend directory, run the following command to create a new React app and install all the working dependencies used in the Moments application:
+````
+npx create-react-app . --template git+https://github.com/Code-Institute-Org/cra-template-moments.git --use-npm
+````
+5. Enter y to confirm and then click enter
+6. Open the package.json file in the frontend directory, and at the bottom of the file, add a new key to the JSON object
+````
+"proxy": "http://localhost:8000/"
+````
+7. Once the BE is set up, run the following command in the frontend directory:
+```npm run build && mv build ../staticfiles/.```
+
+You will need to re-run this command any time you want to deploy changes to the static files in your project, including the React code. To do this, you need to delete the existing build folder and rebuild it.
+This command will delete the old folder and replace it with the new one:
+````
+npm run build && rm -rf ../staticfiles/build && mv build ../staticfiles/.
+````
