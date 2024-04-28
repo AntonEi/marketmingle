@@ -13,22 +13,334 @@ The live link to the site can be found here - [MarketMingle](https://marketmingl
 - To foster engagement through features such as polls, following other users, and expressing bullish or bearish sentiments on posts.
 - User-friendly design to ensure a seamless and enjoyable experience for all users.
 
-## User Stories
 
-- ### First-time User
-  - As a first-time user, I want to understand the purpose of the site and how it can benefit me in navigating the stock market.
-  - As a first-time user, I want to easily navigate the website and find relevant discussions without needing to sign up immediately.
-  - As a first-time user, I want to explore the features of the site, such as polls and sentiment indicators, to gauge community sentiment.
+## User Stories for "marketmingle"
+<details><summary>Polls</summary>
 
-- ### Returning User
-  - As a returning user, I want to quickly access the latest discussions and updates on the stock market to stay informed.
-  - As a returning user, I want to engage with other users by commenting on posts and following users with valuable insights.
-  - As a returning user, I want to express my sentiment on posts by indicating whether I am bullish or bearish, contributing to the overall discussion.
+### As a logged-in user
+I can participate in polls created by the admin to share my opinion on various topics or questions.
 
-- ### Frequent User
-  - As a frequent user, I want to personalize my profile by adding a profile picture and a bio, enhancing my presence within the community.
-  - As a frequent user, I want to participate in polls to share my opinion on various market topics and see how others are voting.
-  - As a frequent user, I want to receive notifications about new posts, comments, and updates from users I follow, ensuring I stay engaged and informed.
+**Acceptance criteria:**
+- Polls should be visible and accessible to logged-in users on the platform.
+- Each poll should include options for users to select their preferred choice or answer.
+- After submitting my vote, the poll should update to reflect the overall voting results.
+- Users should only be allowed to vote once in each poll to maintain voting integrity and accuracy.
+- The poll results should be visible to all users after voting, providing transparency and engagement.
+</details>
+<details><summary>Tags</summary>
+
+### As a logged-in user
+I want to be able to assign tags or categories to my notes
+
+So that I can easily categorize and retrieve related notes based on topics or themes.
+
+**Acceptance criteria:**
+-  When creating or editing a note, there should be an option to add tags from a predefined list or enter them manually.
+- Tags should be visible on the note details page and clickable to filter notes by the selected tag.
+- Each note can have multiple tags assigned to it for comprehensive organization.
+</details>
+<details><summary>Bullish/Bearish</summary>
+
+### As a logged-in user
+I want to be able to like posts on "marketmingle" to show my appreciation for content that interests me.
+
+**Acceptance criteria:**
+-  Logged-in users can like posts by clicking on a dedicated "bullish/bearish" button associated with each post.
+- Upon clicking the "bullish/bearish" button, the post's bullish/bearish count increases, indicating user appreciation.
+- Users can only like a post once.
+- The post will turn green if bullish and red if bearish.
+</details>
+<details><summary>Viewing Profiles</summary>
+
+### As a user
+I want to view other users' profiles on "marketmingle" to see their posts and learn more about them.
+
+**Acceptance criteria:**
+- Users can navigate to other users' profiles on "marketmingle" from their posts or through a dedicated search feature.
+- The profile page displays essential information about the user, including their bio, profile picture, number of posts, followers, and users they follow.
+- Users can scroll through the user's posts and engage with them if desired.
+</details>
+<details><summary>Viewing Avatars</summary>
+
+
+### As a user
+I want to view other users' avatars to easily identify them within the "marketmingle" community.
+
+**Acceptance criteria:**
+- Avatars of other users are prominently displayed alongside their usernames and posts within the "marketmingle" forum.
+- Avatars provide visual cues that aid users in identifying and distinguishing between different forum members.
+- Avatars are displayed consistently and accurately across various sections of the forum, ensuring a cohesive user experience.
+</details>
+<details><summary>Viewing Followed Users' Content</summary>
+
+### As a logged-in user
+I want to view content from users I follow on "marketmingle" to keep up with their contributions to the forum.
+
+**Acceptance criteria:**
+- Logged-in users can access a section or page on "marketmingle" to view posts from users they follow.
+- Posts from followed users are displayed in chronological order, allowing users to stay updated on their contributions.
+- Users can seamlessly navigate through multiple pages of followed users' posts using intuitive controls.
+</details>
+<details><summary>Following and Unfollowing Users</summary>
+
+### As a logged-in user
+I want to follow and unfollow other users on "marketmingle" to customize my posts feed and interactions.
+
+**Acceptance criteria:**
+- Logged-in users have the option to follow or unfollow other users on "marketmingle" from their profile pages or posts.
+- A follow button is displayed on the profile page, allowing users to initiate or terminate the follow relationship.
+- Upon following or unfollowing a user, the follower count and following count are updated accordingly.
+</details>
+<details><summary>Maintaining Logged-in Status</summary>
+
+### As a user
+I want my logged-in status to be maintained until I choose to log out, ensuring uninterrupted user experience.
+
+**Acceptance criteria:**
+- User sessions are maintained consistently across multiple browsing sessions until the user actively logs out.
+- Users remain logged in even after prolonged periods of inactivity, ensuring uninterrupted access to forum features.
+- Access tokens are periodically refreshed to prevent unauthorized access and ensure security.
+</details>
+
+<details><summary>Deleting Comments</summary>
+
+### As the owner of a comment
+I want to delete my comments on "marketmingle" to have control over the content I contribute.
+
+**Acceptance criteria:**
+- Comment owners have the option to delete their comments on "marketmingle" to exercise control over the content they contribute.
+- A delete option is available next to each comment, allowing comment owners to remove their comments from the post page.
+- Upon confirmation, the deleted comment is permanently removed from the post page.
+</details>
+<details><summary>Viewing User Statistics</summary>
+
+### As a user
+I want to view statistics about specific users on "marketmingle" to learn more about them.
+
+**Acceptance criteria:**
+- Users can access detailed statistics about specific users on "marketmingle" from their profile pages.
+- The user stats section includes information such as the user's bio, total number of posts, followers count, and users they follow.
+- The information is presented in a clear and organized manner, allowing users to learn more about the profile owner.
+</details>
+<details><summary>Updating Username and Password</summary>
+
+### As a logged-in user
+I want to update my username and password on "marketmingle" to change my display name and ensure account security.
+
+**Acceptance criteria:**
+- Logged-in users have the option to update their usernames and passwords on "marketmingle" for security and personalization purposes.
+- An option to update username and password is accessible from the user settings or profile page.
+- Users can enter new usernames and passwords and confirm the changes, ensuring account security and customization.
+</details>
+<details><summary>Editing Profile</summary>
+
+### As a logged-in user
+I want to edit my profile on "marketmingle" to change my profile picture and bio.
+
+**Acceptance criteria:**
+- Logged-in users can edit their profiles on "marketmingle" to update their profile picture and bio.
+- An edit option is available on the profile page, allowing users to modify their profile information.
+- Upon submission of changes, the profile is updated with the new profile picture and bio.
+</details>
+<details><summary>Viewing Most Followed Profiles</summary>
+
+### As a user
+I want to see a list of the most followed profiles on "marketmingle" to discover popular users within the community.
+
+**Acceptance criteria:**
+- A list of the most followed profiles is accessible to users on "marketmingle" through a designated section or page.
+- The list displays the usernames or profile pictures of the most followed users, sorted by the number of followers.
+- Users can click on a profile to view more details or choose to follow the user directly from the list.
+</details>
+<details><summary>Viewing All Posts by a Specific User</summary>
+
+### As a user
+I want to view all posts by a specific user on "marketmingle" to catch up on their latest contributions or decide whether to follow them.
+
+**Acceptance criteria:**
+- Users can access a list of all posts made by a specific user on "marketmingle" from their profile page.
+- The list displays the titles or thumbnails of the user's posts, sorted by the most recent.
+- Users can click on a post to view its details or engage with it directly from the list.
+</details>
+<details><summary>Adding Comments to Posts</summary>
+
+### As a logged-in user
+I want to add comments to posts on "marketmingle" to share my thoughts and opinions.
+
+**Acceptance criteria:**
+- Post owners have access to an edit option on "marketmingle" to modify the title and description of their posts.
+- The edit interface allows post owners to make corrections or updates to the post content.
+- Upon submission of the edits, the post is updated with the revised title and description.
+</details>
+<details><summary>Editing Post Title and Description</summary>
+
+### As the owner of a post
+I want to edit the title and description of my post on "marketmingle" to make corrections or updates.
+
+**Acceptance criteria:**
+- Post owners have access to an edit option on "marketmingle" to modify the title and description of their posts.
+- The edit interface allows post owners to make corrections or updates to the post content.
+- Upon submission of the edits, the post is updated with the revised title and description.
+</details>
+<details><summary>Seamless Scrolling</summary>
+
+### As a user
+I want to scroll through posts seamlessly with infinite scrolling, ensuring a smooth browsing experience without the need to click on "next page."
+
+**Acceptance criteria:**
+- Users can scroll through posts seamlessly on "marketmingle" using infinite scrolling functionality.
+- As the user scrolls down the page, additional posts are dynamically loaded and appended to the existing content.
+- Infinite scrolling ensures a smooth browsing experience without interruptions or the need to click on a "next page" button.
+</details>
+<details><summary>Searching for Posts</summary>
+
+### As a user
+I want to search for posts using keywords on "marketmingle" so that I can find specific content and user profiles that interest me.
+
+**Acceptance criteria:**
+- Users have access to a search bar or functionality on "marketmingle" to search for posts using keywords.
+- The search results display relevant posts matching the entered keywords, along with their titles, authors, and timestamps.
+- Users can click on search results to navigate directly to the respective posts for detailed viewing.
+</details>
+<details><summary>Viewing Most Recent Posts</summary>
+
+### As a user
+I want to view the most recent posts on "marketmingle," ordered by the latest creations, to stay up-to-date with the latest discussions and content.
+
+**Acceptance criteria:**
+- Users can access a dedicated section or page on "marketmingle" to view the most recent posts.
+- The posts are displayed in descending order based on their creation timestamp, ensuring the latest discussions are prioritized.
+- Users can navigate through multiple pages of recent posts if the number of posts exceeds the display limit on a single page.
+</details>
+<details><summary>Viewing Liked Posts</summary>
+
+### As a logged-in user
+I want to view posts that I have liked on "marketmingle" to revisit content that I enjoyed.
+
+**Acceptance criteria:**
+- Logged-in users have a designated section or page on "marketmingle" to view posts they have liked.
+- Liked posts are presented in a user-friendly format, showcasing relevant information such as title, author, and timestamp.
+- Users can click on liked posts to navigate directly to the respective posts for detailed viewing or engagement.
+</details>
+<details><summary>Viewing Post Details</summary>
+
+### As a user
+I want to view the details of a single post on "marketmingle" to learn more about the content shared.
+
+**Acceptance criteria:**
+- Users can click on a post title or thumbnail to view the details of a single post.
+- The post page displays the post title, content, author, creation date, and any associated tags.
+- Users can scroll through comments and interact with the post's content.
+</details>
+<details><summary>Editing Comments</summary>
+
+### As the owner of a comment
+I want to edit my comments on "marketmingle" to make corrections or updates.
+
+**Acceptance criteria:**
+- Comment owners can edit their comments on "marketmingle" to make corrections or updates.
+- An edit option is provided next to each comment, enabling comment owners to modify the comment text.
+- Upon submission of the edits, the comment is updated with the revised text.
+</details>
+<details><summary>Creating Posts</summary>
+
+### As a logged-in user
+I want to create posts on "marketmingle" to share stock tips and other stock-related content with the community.
+
+**Acceptance criteria:**
+- Logged-in users can access a post creation interface on "marketmingle."
+- The post creation interface includes fields for title, content, and optional tags.
+- Upon successful submission, the post is published to the forum and made visible to other users.
+</details>
+<details><summary>Seamless Page Navigation</summary>
+
+### As a user
+I want to navigate through pages swiftly without page refreshes, ensuring seamless content viewing.
+
+**Acceptance criteria:**
+- Page transitions occur swiftly and seamlessly without the need for page refreshes.
+- Users can navigate between pages using intuitive controls, such as clickable links or buttons.
+- Content loads quickly and smoothly, enhancing the overall user experience.
+</details>
+<details><summary>Viewing Navigation Bar</summary>
+
+### As a user
+I want to see a navigation bar on every page so that I can easily navigate between different sections of the forum.
+
+**Acceptance criteria:**
+- The navigation bar is displayed consistently across all pages of the forum.
+- The navigation bar provides links to different sections of the forum, allowing users to easily switch between them.
+- The navigation bar remains accessible and functional regardless of the user's location within the forum.
+</details>
+<details><summary>Reading Comments</summary>
+
+### As a user
+I want to read comments on posts on "marketmingle" to see other users' perspectives on the content.
+
+**Acceptance criteria:**
+- Users can read comments on posts on "marketmingle" to gain insights into other users' perspectives on the content.
+- Comments are displayed in a user-friendly format, including the commenter's username, timestamp, and comment text.
+- Users can scroll through multiple comments and engage with them if desired.
+</details>
+<details><summary>Creating a New Account</summary>
+
+### As a user
+I want to create a new account on "marketmingle" so that I can access all the features available to registered users.
+
+**Acceptance criteria:**
+- Users can access a sign-up form to create a new account on "marketmingle."
+- The sign-up form includes fields for necessary user information, such as username and password.
+- Upon successful submission of the sign-up form, the user receives confirmation of their new account creation.
+</details>
+<details><summary>Signing In</summary>
+
+### As a user
+I want to sign in to "marketmingle" to access the functionalities reserved for logged-in users.
+
+**Acceptance criteria:**
+- Users can access a sign-in form to log in to their existing "marketmingle" accounts.
+- The sign-in form includes fields for users to enter their credentials, such as email/username and password.
+- Upon successful submission of the sign-in form, the user gains access to the functionalities reserved for logged-in users.
+</details>
+<details><summary>Checking Logged-in Status</summary>
+
+### As a user
+I want to be able to determine whether I am logged in or not, ensuring easy access to my account.
+
+**Acceptance criteria:**
+- The forum interface provides a clear indication of whether the user is currently logged in or not.
+- Logged-in users have access to additional features and functionalities compared to logged-out users.
+- Users can easily discern their logged-in status at any point during their browsing session.
+</details> 
+<details><summary>Accessing Sign-in/Sign-up Options</summary>
+
+### As a logged-out user
+I want to see options for signing in or signing up, making it easy for me to access my account.
+
+**Acceptance criteria:**
+- When logged out, users are presented with clear options for signing in or signing up prominently on the forum's interface.
+- The sign-in and sign-up options are easily accessible and distinguishable from other elements on the page.
+- Users are guided seamlessly through the authentication process when attempting to access restricted features while logged out.
+</details>
+<details><summary>Viewing Post Page</summary>
+
+### As a user
+I want to view the post page on "marketmingle" to read comments and engage with the content shared.
+
+**Acceptance criteria:**
+- Users can navigate to the post page on "marketmingle" to view the content and comments of a specific post.
+- The post page displays the post title, content, author, creation date, and any associated tags.
+- Users can scroll through comments and engage with the post's content seamlessly.
+</details>
+<details><summary>Viewing Comment Timestamps</summary>
+
+### As a user
+I want to see the timestamp of comments on "marketmingle" to gauge their recency.
+
+**Acceptance criteria:**
+- Users can view the timestamp of comments on "marketmingle" to determine their recency.
+- The timestamp is displayed alongside each comment, indicating when it was posted relative to the current time.
+</details> 
 
 ## Features
 
