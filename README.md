@@ -33,9 +33,12 @@ The live link to the site can be found here - [MarketMingle](https://marketmingl
     + [JavaScript and React Libraries](#javascript-and-react-libraries)
     + [Other Technologies](#other-technologies)
   * [Testing](#testing)
-  * [Deployment](#deployment)
+  * [Deployment and Development](#deployment-and-development)
+  * [Credits](#credits)
+  * [Acknowledgments](#acknowledgments)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
 
 ## Site Owner Goals

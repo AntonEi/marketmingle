@@ -8,17 +8,17 @@ Eslint has been installed and configured. All code passes without errors. The on
 ### CSS
 No errors were found when passing my CSS file through the official [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
 
- <details>
+<details>
 
- <summary>CSS</summary>
+<summary>CSS</summary>
 
-![CSS Validation](docs/readme_images/CSS.png)
- </details>
+![CSS Validation](readme/pictures/w3c.png)
+</details>
 
 ## Accessibility
- All pages received high scores in terms of Accessibility, Best Practices, and SEO. The lower scores in Performance are primarily attributed to issues such as render-blocking resources and the size of images
+All pages received high scores in terms of Accessibility, Best Practices, and SEO. The lower scores in Performance are primarily attributed to issues such as render-blocking resources and the size of images
 
- ### Python
+### Python
 All Python files were run through [Pep8](https://pep8ci.herokuapp.com/#) with no errors found. 
 
 ## Browser Testing
@@ -71,12 +71,11 @@ All Python files were run through [Pep8](https://pep8ci.herokuapp.com/#) with no
 | Log In Link           | Display    | Not visible if user in session                                     | Pass      |
 |                       |            |                                                                    |           |
 
-
 ### Posts:
 | Element              | Action            | Expected Result                                                                  | Pass/Fail |
 |----------------------|-------------------|----------------------------------------------------------------------------------|-----------|
-| Bullish              | Click             | If can press the bull if you are bullish about the content                       | Pass      |
-| Bearish              | Click             | If can press the bear if you are bearish about the content                       | Pass      |
+| Bullish              | Click             | You can press the bull if you are bullish about the content                       | Pass      |
+| Bearish              | Click             | You can press the bear if you are bearish about the content                       | Pass      |
 | Read more            | Click             | Opens the full content of the post                                               | Pass      |
 | Comment              | Click             | Opens the posts page so you can comment                                          | Pass      |
 | Link on header       | Click             | Opens the posts page                                                             | Pass      |
@@ -134,8 +133,6 @@ All Python files were run through [Pep8](https://pep8ci.herokuapp.com/#) with no
 | Change password       | Click      | User can change password                                           | Pass      |
 | Posts                 | Display    | Users can see there own posts                                      | Pass      |
 
-
-### Fixed Bugs
 
 ### Fixed Bugs
 
